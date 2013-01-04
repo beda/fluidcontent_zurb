@@ -1,0 +1,56 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
+<f:layout name="FCE"/>
+
+<f:section name="Configuration">
+    <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-groups" label="Zurb Foundation: Button Groups"
+                   description="Places child content elements as button groups."
+                   icon="../typo3conf/ext/fluidcontent/Resources/Public/Icons/icon-twitter.png">
+
+        <flux:flexform.sheet name="display" label="Display">
+            <flux:flexform.field.checkbox name="radius" label="Make buttons with radius"/>
+        </flux:flexform.sheet>
+
+        <flux:flexform.sheet name="buttons" label="Buttons">
+            <flux:flexform.section name="buttons" label="Buttons">
+                <flux:flexform.object name="button" label="Button">
+                    <flux:flexform.field.input name="title" label="Button Text"/>
+                    <flux:flexform.field.input name="target" label="Link target">
+                        <flux:flexform.field.wizard.link/>
+                    </flux:flexform.field.input>
+                </flux:flexform.object>
+            </flux:flexform.section>
+        </flux:flexform.sheet>
+
+    </flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+    <ul>
+        <f:for each="{buttons}" as="button" iteration="iteration">
+            <li>{button.button.title}</li>
+        </f:for>
+    </ul>
+    <flux:widget.grid/>
+</f:section>
+
+<f:section name="Main">
+    <ul class="button-group {f:if(condition: radius, then: 'radius')} ">
+        <f:for each="{buttons}" as="button" iteration="iteration">
+            <li>
+
+                <f:if condition=" {v:call('intval', arguments: {0: button.button.target})} > 0">
+                    <f:then>
+                        <f:link.page pageUid="{button.button.target}"
+                                     class="button {f:if(condition: radius, then: 'radius')}">{button.button.title}
+                        </f:link.page>
+                    </f:then>
+                    <f:else>
+                        <a href="http://{button.button.target}"
+                           class="button {f:if(condition: radius, then: 'radius')}">{button.button.title}</a>
+                    </f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
