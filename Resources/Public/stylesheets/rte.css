@@ -1,0 +1,20 @@
+/****************************************************************************************
+# Default css file for content edited with htmlArea RTE
+#
+# Defines a few class selectors that can be simply taken as examples by anyone who needs to configure the RTE.
+# This css file is referenced by property RTE.default.contentCSS in the default configuration of htmlArea RTE.
+# ***************************************************************************************/
+/* line 8, ../../Private/sass/scss/rte.scss */
+ul.disc {
+  list-style-type: disc;
+}
+
+/* line 12, ../../Private/sass/scss/rte.scss */
+ul.square {
+  list-style-type: square;
+}
+
+/* line 16, ../../Private/sass/scss/rte.scss */
+ul.circle {
+  list-style-type: circle;
+}

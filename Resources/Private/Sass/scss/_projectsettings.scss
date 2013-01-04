@@ -1,0 +1,20 @@
+// Your custom settings file to override Foundation defaults
+
+$mainColor: #6a1f39;
+$secondaryColor: #6787a8;
+$highlightColor: #d6e1eb;
+$backgroundColor: #BCB08E;
+
+$bodyFontFamily: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+$typekit: "minion-pro-caption", Georgia, Times, serif;
+
+$headerFontFamily: $bodyFontFamily;
+$headerFontWeight: bold;
+$headerFontStyle: normal;
+$headerFontColor: $mainColor;
+$bodyFontFamily: $bodyFontFamily;
+$bodyFontWeight: normal;
+$bodyFontStyle: normal;
+$bodyFontColor: #000000;
+
+$rowWidth: 850px;
