@@ -1,0 +1,222 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+<f:layout name="ZurbFoundationLayout"/>
+
+<f:section name="Configuration">
+    <flux:flexform id="banded-page" label="Banded Page Template">
+        <flux:flexform.field.custom name="void" label="Explanation">
+            <h2>This is the Banded Page Template</h2>
+        </flux:flexform.field.custom>
+        <flux:flexform.grid>
+            <flux:flexform.grid.row>
+                <flux:flexform.grid.column colPos="1" colspan="3" name="First Band"/>
+            </flux:flexform.grid.row>
+            <flux:flexform.grid.row>
+                <flux:flexform.grid.column colPos="2" colspan="1" rowspan="2" name="Second Band - Image Left"/>
+                <flux:flexform.grid.column colPos="3" colspan="2" name="Second Band - Title"/>
+                <flux:flexform.grid.row>
+                    <flux:flexform.grid.column colPos="4" colspan="1" name="Second Band - Content Left"/>
+                    <flux:flexform.grid.column colPos="5" colspan="1" name="Second Band - Content Right"/>
+                </flux:flexform.grid.row>
+            </flux:flexform.grid.row>
+            <flux:flexform.grid.row>
+                <flux:flexform.grid.column colPos="6" colspan="2" name="Third Band"/>
+                <flux:flexform.grid.column colPos="7" colspan="1" name="Third Band - Image Right"/>
+            </flux:flexform.grid.row>
+        </flux:flexform.grid>
+    </flux:flexform>
+</f:section>
+
+<f:section name="Resources">
+
+</f:section>
+
+<f:section name="Content">
+    <!-- Header and Nav -->
+
+    <div class="row">
+        <div class="three columns">
+            <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+        </div>
+        <div class="nine columns">
+            <ul class="nav-bar right">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- End Header and Nav -->
+
+
+    <!-- First Band (Image) -->
+
+    <div class="row">
+        <div class="twelve columns">
+            <v:page.content.render column="1" as="ContentElements">
+                <f:if condition="{ContentElements}">
+                    <f:then>
+                        <f:for each="{ContentElements}" as="ContentElement">
+                            <f:format.raw>{ContentElement}</f:format.raw>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <img src="http://placehold.it/1000x400&text=[img]"/>
+                    </f:else>
+                </f:if>
+            </v:page.content.render>
+            <hr/>
+        </div>
+    </div>
+
+
+    <!-- Second Band (Image Left with Text) -->
+
+    <div class="row">
+        <div class="four columns">
+            <v:page.content.render column="2" as="SecondBandImageLeftContentElements">
+                <f:if condition="{SecondBandImageLeftContentElements}">
+                    <f:then>
+                        <f:for each="{SecondBandImageLeftContentElements}" as="SecondBandImageLeftContentElement">
+                            <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <img src="http://placehold.it/400x300&text=[img]"/>
+                    </f:else>
+                </f:if>
+            </v:page.content.render>
+        </div>
+        <div class="eight columns">
+
+            <v:page.content.render column="3" as="SecondBandImageLeftContentElements">
+                <f:if condition="{SecondBandImageLeftContentElements}">
+                    <f:then>
+                        <f:for each="{SecondBandImageLeftContentElements}" as="SecondBandImageLeftContentElement">
+                            <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <h4>This is a content section.</h4>
+                    </f:else>
+                </f:if>
+            </v:page.content.render>
+
+            <div class="row">
+                <div class="six columns">
+                    <v:page.content.render column="4" as="SecondBandImageLeftContentElements">
+                        <f:if condition="{SecondBandImageLeftContentElements}">
+                            <f:then>
+                                <f:for each="{SecondBandImageLeftContentElements}"
+                                       as="SecondBandImageLeftContentElement">
+                                    <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
+                                </f:for>
+                            </f:then>
+                            <f:else>
+                                <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck
+                                    duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig
+                                    pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua
+                                    adipisicing rump corned beef.</p>
+                            </f:else>
+                        </f:if>
+                    </v:page.content.render>
+                </div>
+                <div class="six columns">
+                    <v:page.content.render column="5" as="SecondBandImageLeftContentElements">
+                        <f:if condition="{SecondBandImageLeftContentElements}">
+                            <f:then>
+                                <f:for each="{SecondBandImageLeftContentElements}"
+                                       as="SecondBandImageLeftContentElement">
+                                    <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
+                                </f:for>
+                            </f:then>
+                            <f:else>
+                                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs
+                                    meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt
+                                    ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud
+                                    pastrami.</p>
+                            </f:else>
+                        </f:if>
+                    </v:page.content.render>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Band (Image Right with Text) -->
+
+    <div class="row">
+        <div class="eight columns">
+            <v:page.content.render column="6" as="ThirdBandContentElements">
+                <f:if condition="{ThirdBandContentElements}">
+                    <f:then>
+                        <f:for each="{ThirdBandContentElements}"
+                               as="ThirdBandContentElement">
+                            <f:format.raw>{ThirdBandContentElement}</f:format.raw>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <h4>This is a content section</h4>
+
+                        <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck
+                            duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig
+                            pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua
+                            adipisicing rump corned beef.</p>
+
+                        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball
+                            irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui
+                            bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.s</p>
+                    </f:else>
+                </f:if>
+            </v:page.content.render>
+        </div>
+        <div class="four columns">
+            <v:page.content.render column="7" as="ThirdBandContentElements">
+                <f:if condition="{ThirdBandContentElements}">
+                    <f:then>
+                        <f:for each="{ThirdBandContentElements}"
+                               as="ThirdBandContentElement">
+                            <f:format.raw>{ThirdBandContentElement}</f:format.raw>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <img src="http://placehold.it/400x300&text=[img]"/>
+                    </f:else>
+                </f:if>
+            </v:page.content.render>
+
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer class="row">
+        <div class="twelve columns">
+            <hr/>
+            <div class="row">
+                <div class="six columns">
+                    <p>&copy; Copyright no one at all. Go to town.</p>
+                </div>
+                <div class="six columns">
+                    <ul class="link-list right">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</f:section>
+
+</div>
+
