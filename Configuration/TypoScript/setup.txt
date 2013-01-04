@@ -1,0 +1,57 @@
+[GLOBAL]
+#---------------------------------------------------------------
+# Fluid Content Elements for fluidcontent
+#---------------------------------------------------------------
+plugin.tx_fed.fce.fluidcontent_zurb {
+	label = Fluid Content Elements - Zurb Foundation
+	templateRootPath = EXT:fluidcontent_zurb/Resources/Private/Elements/
+	partialRootPath = EXT:fluidcontent_zurb/Resources/Private/Partials/
+	layoutRootPath = EXT:fluidcontent_zurb/Resources/Private/Layouts/
+}
+
+#---------------------------------------------------------------
+# Page Templates for fluidpages
+#---------------------------------------------------------------
+plugin.tx_fed.page.ZurbFoundation {
+    templateRootPath = EXT:fluidcontent_zurb/Resources/Private/Templates/
+    partialRootPath = EXT:fluidcontent_zurb/Resources/Private/Partials/
+    layoutRootPath = EXT:fluidcontent_zurb/Resources/Private/Layouts/
+}
+
+#---------------------------------------------------------------
+# CSS
+#---------------------------------------------------------------
+page.includeCSS {
+  file1 = EXT:fluidcontent_zurb/Resources/Public/stylesheets/style.css
+}
+
+
+#---------------------------------------------------------------
+# Javascript
+#---------------------------------------------------------------
+
+page.includeJS {
+  1 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/modernizr.foundation.js
+  2 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.js
+}
+page.includeJSFooter {
+  # Foundation JS
+  1 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.cookie.js
+  5 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.event.move.js
+  10 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.event.swipe.js
+  15 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.accordion.js
+  20 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.alerts.js
+  25 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.buttons.js
+  30 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.clearing.js
+  35 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.forms.js
+  40 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.joyride.js
+  45 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.magellan.js
+  50 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.mediaQueryToggle.js
+  55 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.navigation.js
+  60 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.orbit.js
+  65 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.reveal.js
+  70 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.tabs.js
+  75 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.tooltips.js
+  80 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.topbar.js
+  85 = EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.placeholder.js
+}
