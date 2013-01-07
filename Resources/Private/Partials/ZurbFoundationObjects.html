@@ -64,6 +64,26 @@
     </v:page.menu>
 </f:section>
 
+<f:section name="SideNav">
+    <v:page.menu entryLevel="0">
+        <ul class="side-nav">
+            <f:for each="{menu}" as="mainPage" iteration="iteration">
+                <f:debug>{mainPage.doktype}</f:debug>
+                <v:switch value="{mainPage.doktype}">
+                    <v:case case="199" break="TRUE">
+                        <li class="divider"></li>
+                    </v:case>
+                    <v:case case="default" break="TRUE">
+                        <li class="{mainPage.class}">
+                            <a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
+                        </li>
+                    </v:case>
+                </v:switch>
+            </f:for>
+        </ul>
+    </v:page.menu>
+</f:section>
+
 
 <f:section name="PlaceholderImage">
     <v:page.content.render column="{colPos}" as="ContentElements">
