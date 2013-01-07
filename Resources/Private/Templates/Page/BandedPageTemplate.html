@@ -65,18 +65,7 @@
 
     <div class="row">
         <div class="twelve columns">
-            <v:page.content.render column="1" as="ContentElements">
-                <f:if condition="{ContentElements}">
-                    <f:then>
-                        <f:for each="{ContentElements}" as="ContentElement">
-                            <f:format.raw>{ContentElement}</f:format.raw>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <img src="http://placehold.it/1000x400&text=[img]"/>
-                    </f:else>
-                </f:if>
-            </v:page.content.render>
+            <f:render section="PlaceholderImage" partial="ZurbFoundationObjects" arguments="{colPos:'1', width:'1000', height:'400', text:'First Band'}"/>
             <hr/>
         </div>
     </div>
@@ -86,70 +75,16 @@
 
     <div class="row">
         <div class="four columns">
-            <v:page.content.render column="2" as="SecondBandImageLeftContentElements">
-                <f:if condition="{SecondBandImageLeftContentElements}">
-                    <f:then>
-                        <f:for each="{SecondBandImageLeftContentElements}" as="SecondBandImageLeftContentElement">
-                            <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <img src="http://placehold.it/400x300&text=[img]"/>
-                    </f:else>
-                </f:if>
-            </v:page.content.render>
+            <f:render section="PlaceholderImage" partial="ZurbFoundationObjects" arguments="{colPos:'2', width:'400', height:'300', text:'Second Band'}"/>
         </div>
         <div class="eight columns">
-
-            <v:page.content.render column="3" as="SecondBandImageLeftContentElements">
-                <f:if condition="{SecondBandImageLeftContentElements}">
-                    <f:then>
-                        <f:for each="{SecondBandImageLeftContentElements}" as="SecondBandImageLeftContentElement">
-                            <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <h4>This is a content section.</h4>
-                    </f:else>
-                </f:if>
-            </v:page.content.render>
-
+            <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'3'}"/>
             <div class="row">
                 <div class="six columns">
-                    <v:page.content.render column="4" as="SecondBandImageLeftContentElements">
-                        <f:if condition="{SecondBandImageLeftContentElements}">
-                            <f:then>
-                                <f:for each="{SecondBandImageLeftContentElements}"
-                                       as="SecondBandImageLeftContentElement">
-                                    <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
-                                </f:for>
-                            </f:then>
-                            <f:else>
-                                <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck
-                                    duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig
-                                    pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua
-                                    adipisicing rump corned beef.</p>
-                            </f:else>
-                        </f:if>
-                    </v:page.content.render>
+                    <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'4'}"/>
                 </div>
                 <div class="six columns">
-                    <v:page.content.render column="5" as="SecondBandImageLeftContentElements">
-                        <f:if condition="{SecondBandImageLeftContentElements}">
-                            <f:then>
-                                <f:for each="{SecondBandImageLeftContentElements}"
-                                       as="SecondBandImageLeftContentElement">
-                                    <f:format.raw>{SecondBandImageLeftContentElement}</f:format.raw>
-                                </f:for>
-                            </f:then>
-                            <f:else>
-                                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs
-                                    meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt
-                                    ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud
-                                    pastrami.</p>
-                            </f:else>
-                        </f:if>
-                    </v:page.content.render>
+                    <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'5'}"/>
                 </div>
             </div>
         </div>
@@ -159,43 +94,11 @@
 
     <div class="row">
         <div class="eight columns">
-            <v:page.content.render column="6" as="ThirdBandContentElements">
-                <f:if condition="{ThirdBandContentElements}">
-                    <f:then>
-                        <f:for each="{ThirdBandContentElements}"
-                               as="ThirdBandContentElement">
-                            <f:format.raw>{ThirdBandContentElement}</f:format.raw>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <h4>This is a content section</h4>
-
-                        <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck
-                            duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig
-                            pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua
-                            adipisicing rump corned beef.</p>
-
-                        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball
-                            irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui
-                            bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.s</p>
-                    </f:else>
-                </f:if>
-            </v:page.content.render>
+            <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'6'}"/>
         </div>
         <div class="four columns">
-            <v:page.content.render column="7" as="ThirdBandContentElements">
-                <f:if condition="{ThirdBandContentElements}">
-                    <f:then>
-                        <f:for each="{ThirdBandContentElements}"
-                               as="ThirdBandContentElement">
-                            <f:format.raw>{ThirdBandContentElement}</f:format.raw>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <img src="http://placehold.it/400x300&text=[img]"/>
-                    </f:else>
-                </f:if>
-            </v:page.content.render>
+            <f:render section="PlaceholderImage" partial="ZurbFoundationObjects" arguments="{colPos:'7', width:'400', height:'300', text:'Third Band Image'}"/>
+
 
         </div>
     </div>

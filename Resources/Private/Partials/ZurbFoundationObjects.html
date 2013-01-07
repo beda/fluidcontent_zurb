@@ -50,3 +50,36 @@
         </div>
     </div>
 </f:section>
+
+
+<f:section name="PlaceholderImage">
+    <v:page.content.render column="{colPos}" as="ContentElements">
+        <f:if condition="{ContentElements}">
+            <f:then>
+                <f:for each="{ContentElements}" as="ContentElement">
+                    <f:format.raw>{ContentElement}</f:format.raw>
+                </f:for>
+            </f:then>
+            <f:else>
+                <v:format.placeholder.image text="{text}" width="{width}" height="{height}" backgroundColor="DDDDDD"
+                                            textColor="FFFFFF"/>
+            </f:else>
+        </f:if>
+    </v:page.content.render>
+</f:section>
+
+<f:section name="PlaceholderText">
+    <v:page.content.render column="{colPos}" as="ContentElements">
+        <f:if condition="{ContentElements}">
+            <f:then>
+                <f:for each="{ContentElements}" as="ContentElement">
+                    <f:format.raw>{ContentElement}</f:format.raw>
+                </f:for>
+            </f:then>
+            <f:else>
+                <p>Atem quodis ma vid que por sam volori bla earum auta delent molentionem ea volores simusame soloreiur
+                    rese int facesequi tes rectur, ut dignimi, que quist evendae. </p>
+            </f:else>
+        </f:if>
+    </v:page.content.render>
+</f:section>
