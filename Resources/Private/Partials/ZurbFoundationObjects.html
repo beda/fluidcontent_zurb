@@ -2,3 +2,51 @@
 <f:section name="ZurbFoundationHeadIncludes">
 
 </f:section>
+
+<f:section name="TopBar">
+    <div class="row">
+        <div class="twelve columns">
+            <nav class="top-bar">
+                <ul>
+                    <!-- Title Area -->
+                    <li class="name">
+                        <a href="#"><img src="http://placehold.it/200x40&text=[Logo]"/></a>
+                    </li>
+                    <li class="toggle-topbar"><a href="#"></a></li>
+                </ul>
+
+                <section>
+                    <v:page.menu
+                            entryLevel="0" classActive="active"
+                            classCurrent="current" classHasSubpages="has-dropdown"
+                            classFirst="first" classLast="last">
+                        <f:if condition="{menu}">
+
+                            <ul class="right">
+                                <f:for each="{menu}" as="level-one">
+                                    <li class="{level-one.class}">
+                                        <a href="{level-one.link}" class="{level-one.class}">{level-one.title}</a>
+                                        <f:if condition="{level-one.hasSubPages}">
+                                            <v:page.menu entryLevel="1" pageUid="{level-one.uid}">
+                                                <f:if condition="{menu}">
+                                                    <ul class="dropdown">
+                                                        <f:for each="{menu}" as="level-two">
+                                                            <li class="{level-two.class}">
+                                                                <a href="{level-two.link}"
+                                                                   class="{level-two.class}">{level-two.title}</a>
+                                                            </li>
+                                                        </f:for>
+                                                    </ul>
+                                                </f:if>
+                                            </v:page.menu>
+                                        </f:if>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </f:if>
+                    </v:page.menu>
+                </section>
+            </nav>
+        </div>
+    </div>
+</f:section>

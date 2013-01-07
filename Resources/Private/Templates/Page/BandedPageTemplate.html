@@ -12,6 +12,7 @@
         <flux:flexform.field.custom name="void" label="Explanation">
             <h2>This is the Banded Page Template</h2>
         </flux:flexform.field.custom>
+        {flux:flexform.field.checkbox(name: 'topBar', label: 'Show Top Bar',default: 'false')}
         <flux:flexform.grid>
             <flux:flexform.grid.row>
                 <flux:flexform.grid.column colPos="1" colspan="3" name="First Band"/>
@@ -38,6 +39,10 @@
 
 <f:section name="Content">
     <!-- Header and Nav -->
+    <f:if condition="{topBar}">
+        <f:render section="TopBar" partial="ZurbFoundationObjects" arguments="{_all}"/>
+    </f:if>
+
 
     <div class="row">
         <div class="three columns">
