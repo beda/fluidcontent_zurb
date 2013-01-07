@@ -51,6 +51,17 @@
     </div>
 </f:section>
 
+<f:section name="NavBar">
+    <v:page.menu entryLevel="0">
+        <ul class="nav-bar {f:if(then: 'right', else: '', condition: '{pinRight}')}">
+            <f:for each="{menu}" as="mainPage" iteration="iteration">
+                <li class="{mainPage.class}"><a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
+                </li>
+            </f:for>
+        </ul>
+    </v:page.menu>
+</f:section>
+
 
 <f:section name="PlaceholderImage">
     <v:page.content.render column="{colPos}" as="ContentElements">
