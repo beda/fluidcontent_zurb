@@ -96,6 +96,12 @@
     </v:page.menu>
 </f:section>
 
+<f:section name="Breadcrumbs">
+    <v:page.breadCrumb tagName="ul" tagNameChildren="li"
+                       entryLevel="0" class="breadcrumbs">
+    </v:page.breadCrumb>
+</f:section>
+
 <f:section name="PlaceholderImage">
     <v:page.content.render column="{colPos}" as="ContentElements">
         <f:if condition="{ContentElements}">

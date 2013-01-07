@@ -5,123 +5,134 @@
      xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
-<f:layout name="ZurbFoundationLayout"/>
+    <f:layout name="ZurbFoundationLayout"/>
 
-<f:section name="Configuration">
-    <flux:flexform id="banded-page" label="Banded Page Template">
-        <flux:flexform.field.custom name="void" label="Explanation">
-            <h2>This is the Banded Page Template</h2>
-        </flux:flexform.field.custom>
-        {flux:flexform.field.checkbox(name: 'topBar', label: 'Show Top Bar',default: 'false')}
-        <flux:flexform.grid>
-            <flux:flexform.grid.row>
-                <flux:flexform.grid.column colPos="1" colspan="3" name="First Band"/>
-            </flux:flexform.grid.row>
-            <flux:flexform.grid.row>
-                <flux:flexform.grid.column colPos="2" colspan="1" rowspan="2" name="Second Band - Image Left"/>
-                <flux:flexform.grid.column colPos="3" colspan="2" name="Second Band - Title"/>
+    <f:section name="Configuration">
+        <flux:flexform id="banded-page" label="Banded Page Template">
+            <flux:flexform.field.custom name="void" label="Explanation">
+                <h2>This is the Banded Page Template</h2>
+            </flux:flexform.field.custom>
+            {flux:flexform.field.checkbox(name: 'topBar', label: 'Show Top Bar',default: 'false')}
+            <flux:flexform.grid>
                 <flux:flexform.grid.row>
-                    <flux:flexform.grid.column colPos="4" colspan="1" name="Second Band - Content Left"/>
-                    <flux:flexform.grid.column colPos="5" colspan="1" name="Second Band - Content Right"/>
+                    <flux:flexform.grid.column colPos="1" colspan="3" name="First Band"/>
                 </flux:flexform.grid.row>
-            </flux:flexform.grid.row>
-            <flux:flexform.grid.row>
-                <flux:flexform.grid.column colPos="6" colspan="2" name="Third Band"/>
-                <flux:flexform.grid.column colPos="7" colspan="1" name="Third Band - Image Right"/>
-            </flux:flexform.grid.row>
-        </flux:flexform.grid>
-    </flux:flexform>
-</f:section>
+                <flux:flexform.grid.row>
+                    <flux:flexform.grid.column colPos="2" colspan="1" rowspan="2" name="Second Band - Image Left"/>
+                    <flux:flexform.grid.column colPos="3" colspan="2" name="Second Band - Title"/>
+                    <flux:flexform.grid.row>
+                        <flux:flexform.grid.column colPos="4" colspan="1" name="Second Band - Content Left"/>
+                        <flux:flexform.grid.column colPos="5" colspan="1" name="Second Band - Content Right"/>
+                    </flux:flexform.grid.row>
+                </flux:flexform.grid.row>
+                <flux:flexform.grid.row>
+                    <flux:flexform.grid.column colPos="6" colspan="2" name="Third Band"/>
+                    <flux:flexform.grid.column colPos="7" colspan="1" name="Third Band - Image Right"/>
+                </flux:flexform.grid.row>
+            </flux:flexform.grid>
+        </flux:flexform>
+    </f:section>
 
-<f:section name="Resources">
+    <f:section name="Resources">
 
-</f:section>
+    </f:section>
 
-<f:section name="Content">
-    <!-- Header and Nav -->
-    <f:if condition="{topBar}">
-        <f:render section="TopBar" partial="ZurbFoundationObjects" arguments="{_all}"/>
-    </f:if>
+    <f:section name="Content">
+        <!-- Header and Nav -->
+        <f:if condition="{topBar}">
+            <f:render section="TopBar" partial="ZurbFoundationObjects" arguments="{_all}"/>
+        </f:if>
 
 
-    <div class="row">
-        <div class="three columns">
-            <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+        <div class="row">
+            <div class="three columns">
+                <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+            </div>
+            <div class="nine columns">
+                <f:render section="NavBar" partial="ZurbFoundationObjects"
+                          arguments="{pinRight: 'true', vertical: 'false'}"/>
+            </div>
         </div>
-        <div class="nine columns">
-            <f:render section="NavBar" partial="ZurbFoundationObjects" arguments="{pinRight: 'true', vertical: 'false'}"/>
+
+        <!-- End Header and Nav -->
+
+        <div class="row">
+            <div class="twelve columns">
+                <f:render section="Breadcrumbs" partial="ZurbFoundationObjects" />
+            </div>
         </div>
-    </div>
+        <!-- First Band (Image) -->
 
-    <!-- End Header and Nav -->
-
-
-    <!-- First Band (Image) -->
-
-    <div class="row">
-        <div class="twelve columns">
-            <f:render section="PlaceholderImage" partial="ZurbFoundationObjects" arguments="{colPos:'1', width:'1000', height:'400', text:'First Band'}"/>
-            <hr/>
+        <div class="row">
+            <div class="twelve columns">
+                <f:render section="PlaceholderImage" partial="ZurbFoundationObjects"
+                          arguments="{colPos:'1', width:'1000', height:'400', text:'First Band'}"/>
+                <hr/>
+            </div>
         </div>
-    </div>
 
 
-    <!-- Second Band (Image Left with Text) -->
+        <!-- Second Band (Image Left with Text) -->
 
-    <div class="row">
-        <div class="four columns">
-            <f:render section="PlaceholderImage" partial="ZurbFoundationObjects" arguments="{colPos:'2', width:'400', height:'300', text:'Second Band'}"/>
-            <f:render section="SideNav" partial="ZurbFoundationObjects" />
-        </div>
-        <div class="eight columns">
-            <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'3'}"/>
-            <f:render section="SubNav" partial="ZurbFoundationObjects" arguments="{subNavTitle:'SubNavigation'}"/>
-            <div class="row">
-                <div class="six columns">
-                    <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'4'}"/>
-                </div>
-                <div class="six columns">
-                    <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'5'}"/>
+        <div class="row">
+            <div class="four columns">
+                <f:render section="PlaceholderImage" partial="ZurbFoundationObjects"
+                          arguments="{colPos:'2', width:'400', height:'300', text:'Second Band'}"/>
+                <f:render section="SideNav" partial="ZurbFoundationObjects"/>
+            </div>
+            <div class="eight columns">
+                <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'3'}"/>
+                <f:render section="SubNav" partial="ZurbFoundationObjects"
+                          arguments="{subNavTitle:'SubNavigation'}"/>
+                <div class="row">
+                    <div class="six columns">
+                        <f:render section="PlaceholderText" partial="ZurbFoundationObjects"
+                                  arguments="{colPos:'4'}"/>
+                    </div>
+                    <div class="six columns">
+                        <f:render section="PlaceholderText" partial="ZurbFoundationObjects"
+                                  arguments="{colPos:'5'}"/>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Third Band (Image Right with Text) -->
+        <!-- Third Band (Image Right with Text) -->
 
-    <div class="row">
-        <div class="eight columns">
-            <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'6'}"/>
-        </div>
-        <div class="four columns">
-            <f:render section="PlaceholderImage" partial="ZurbFoundationObjects" arguments="{colPos:'7', width:'400', height:'300', text:'Third Band Image'}"/>
-
-
-        </div>
-    </div>
+        <div class="row">
+            <div class="eight columns">
+                <f:render section="PlaceholderText" partial="ZurbFoundationObjects" arguments="{colPos:'6'}"/>
+            </div>
+            <div class="four columns">
+                <f:render section="PlaceholderImage" partial="ZurbFoundationObjects"
+                          arguments="{colPos:'7', width:'400', height:'300', text:'Third Band Image'}"/>
 
 
-    <!-- Footer -->
-
-    <footer class="row">
-        <div class="twelve columns">
-            <hr/>
-            <div class="row">
-                <div class="six columns">
-                    <p>&copy; Copyright no one at all. Go to town.</p>
-                </div>
-                <div class="six columns">
-                    <ul class="link-list right">
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                        <li><a href="#">Link 3</a></li>
-                        <li><a href="#">Link 4</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </footer>
-</f:section>
+
+
+        <!-- Footer -->
+
+        <footer class="row">
+            <div class="twelve columns">
+                <hr/>
+                <div class="row">
+                    <div class="six columns">
+                        <p>&copy; Copyright no one at all. Go to town.</p>
+                    </div>
+                    <div class="six columns">
+                        <ul class="link-list right">
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                            <li><a href="#">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </f:section>
 
 </div>
 
