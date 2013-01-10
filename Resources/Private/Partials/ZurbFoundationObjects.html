@@ -115,7 +115,7 @@
     </f:section>
 
     <f:section name="SubNav">
-        <v:page.menu entryLevel="0">
+        <v:page.menu entryLevel="{f:if(then: '{entryLevel}', else: '0', condition: '{entryLevel}')}">
             <dl class="sub-nav">
                 <dt>{f:if(then: '{subNavTitle}:', else: 'SubNav:', condition: '{subNavTitle}')}</dt>
                 <f:for each="{menu}" as="mainPage" iteration="iteration">
