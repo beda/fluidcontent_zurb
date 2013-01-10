@@ -1,0 +1,95 @@
+# Important: Add to root Page in the Resources Tab under TS configuration
+# tsconfig_user CONFIGURATION
+# <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidcontent_zurb/Configuration/TypoScript/System/tsconfig_page.txt">
+
+############################################################################
+##  RTE
+############################################################################
+// Default RTE configuration
+RTE.default {
+	contentCSS = EXT:fluidcontent_zurb/Resources/Public/stylesheets/rte.css
+	// Use stylesheet file rather than the above mainStyleOverride and inlineStyle properties to style the contents (htmlArea RTE only)
+	ignoreMainStyleOverride = 1
+	// When enabled, Mozilla/Firefox use span tags with style attributes rather than tags such as b, i, font, etc
+	useCSS = 0
+
+	// Markup options (htmlArea RTE only)
+	enableWordClean = 1
+	removeTrailingBR = 1
+	removeComments = 1
+	removeTags = center, font, o:p, sdfield, strike,u
+	removeTagsAndContents = style,script
+
+	//leave these and modify property toolbarOrder to add or remove items!
+	// All Buttons:
+	//  blockstylelabel, blockstyle, textstylelabel, textstyle, fontstyle, fontsize, formatblock, blockquote,
+	//  insertparagraphbefore, insertparagraphafter, lefttoright, righttoleft, language, showlanguagemarks,
+	//  left, center, right, justifyfull, orderedlist, unorderedlist, definitionlist, definitionitem,
+	//  outdent, indent, formattext, bidioverride, big, bold, citation, code, definition, deletedtext,
+	//  emphasis, insertedtext, italic, keyboard, monospaced, quotation, sample, small, span, strikethrough,
+	//  strong, subscript, superscript, underline, variable, textcolor, bgcolor, textindicator, editelement,
+	//  showmicrodata, emoticon, insertcharacter, insertsofthyphen, line, link, unlink, image, table, user,
+	//  acronym, findreplace, spellcheck, chMode, inserttag, removeformat, copy, cut, paste, pastetoggle,
+	//  pastebehaviour,  undo, redo, about, toggleborders, tableproperties, tablerestyle, rowproperties,
+	//  rowinsertabove, rowinsertunder, rowdelete, rowsplit, columnproperties, columninsertbefore,
+	//  columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter,
+	//  celldelete, cellsplit, cellmerge
+  showButtons = *
+  hideButtons =
+
+	// Standard toolbarOrder
+	//	blockstylelabel, blockstyle, space, textstylelabel, textstyle, linebreak,bar, formattext, bold,  strong, italic,
+	//	emphasis, big, small, insertedtext, deletedtext, citation, code, definition, keyboard, monospaced, quotation,
+	//	sample, variable, bidioverride, strikethrough, subscript, superscript, underline, span, bar, fontstyle, space,
+	//	fontsize, bar, formatblock, blockquote, insertparagraphbefore, insertparagraphafter, bar, lefttoright, righttoleft,
+	//	language, showlanguagemarks, bar, left, center, right, justifyfull, bar, orderedlist, unorderedlist, definitionlist,
+	//	definitionitem, outdent, indent, bar, textcolor, bgcolor, textindicator, bar, editelement, showmicrodata, emoticon,
+	//	insertcharacter, insertsofthyphen, line, link, unlink, image, table, user, acronym, bar, findreplace, spellcheck,
+	//	bar, chMode, inserttag, removeformat, bar, copy, cut, paste, pastetoggle, pastebehaviour, bar, undo, redo, bar,
+	//	about, linebreak,  toggleborders, bar, tableproperties, tablerestyle, bar, rowproperties, rowinsertabove,
+	//	rowinsertunder, rowdelete, rowsplit, bar, columnproperties, columninsertbefore, columninsertafter, columndelete,
+	//	columnsplit, bar, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge
+
+	toolbarOrder (
+		formatblock, blockstyle, textstyle, chMode, inserttag, removeformat,
+		bold, italic, underline, bar, subscript,superscript,bar,orderedlist, unorderedlist, bar, link
+	)
+
+		// Enable status bar (htmlArea RTE only)
+	showStatusBar =  1
+
+	// List all class selectors that are allowed on the way to the database
+	proc.allowedClasses (
+
+	)
+
+	// modify some default settings
+	proc.entryHTMLparser_db.tags {
+		// we do not like default settings for p
+		p >
+		div.fixAttrib.align.unset = 0
+		img.allowedAttribs = alt,title,src,width,height
+	}
+
+
+  buttons{
+    formatblock {
+      removeItems = pre,address,h5,h6
+      orderItems =
+      addItemse
+      //items.[item-name].label=
+    }
+    textstyle.showTagFreeClasses = 1
+    textstyle.tags.span.allowedClasses = label, label-radius
+    image.options.removeItems = magic   //Mögliche Optionen: magic, plain, dragdrop, image
+  }
+
+
+	// Configuration specific to the TableOperations feature (htmlArea RTE only)
+	// Remove the following fieldsets from the table operations dialogs
+	disableAlignmentFieldsetInTableOperations = 1
+	disableSpacingFieldsetInTableOperations = 1
+	disableColorFieldsetInTableOperations = 1
+	disableLayoutFieldsetInTableOperations = 1
+	disableBordersFieldsetInTableOperations = 1
+}

@@ -1,23 +1,59 @@
-/****************************************************************************************
-# Default css file for content edited with htmlArea RTE
-#
-# Defines a few class selectors that can be simply taken as examples by anyone who needs to configure the RTE.
-# This css file is referenced by property RTE.default.contentCSS in the default configuration of htmlArea RTE.
-# ***************************************************************************************/
+@import "compass";
+@import "foundation/settings";
+@import "foundation/mixins/all";
 
-ul.disc {
-  list-style-type: disc;
+//Copy RTE classes from zurb-foundation source and create placeholders.
+
+%label {
+  padding: 1px 4px 2px;
+  font-size: ms(0) - 2;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline;
+  position: relative;
+  bottom: 1px;
+  color: #fff;
+  background: $mainColor;
 }
 
-ul.square{
-  list-style-type: square;
+%radius {
+  @include border-radius($buttonRadius);
 }
 
-ul.circle{
-  list-style-type: circle;
+%round {
+  padding: 1px 7px 2px;
+  @include border-radius(1000px);
 }
 
-a.button{
-
+%alert {
+  background-color: $alertColor;
 }
+
+%success {
+  background-color: $successColor;
+}
+
+%secondary {
+  background-color: $secondaryColor;
+  color: darken($secondaryColor, 60%);
+}
+
+// Define your Classes for frontend and rte
+// Add your Classes to FILE:EXT:website_template/Configuration/TypoScript/System/tsconfig_page.txt
+// RTE.default.buttons.textstyle.tags.span.allowedClasses = label, label-radius
+
+span.label {
+  @extend %label;
+  @extend %secondary;
+}
+
+span.label-radius {
+  @extend %label;
+  @extend %secondary;
+  @extend %radius;
+}
+
 

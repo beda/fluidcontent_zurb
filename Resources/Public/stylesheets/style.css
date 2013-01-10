@@ -202,7 +202,7 @@ h6 {
 
 /* line 34, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/common/_typography.scss */
 hr {
-  border: solid #dddddd;
+  border: solid #ddd;
   border-width: 1px 0 0;
   clear: both;
   margin: 22px 0 21px;
@@ -313,7 +313,7 @@ blockquote, blockquote p {
 blockquote {
   margin: 0 0 17px;
   padding: 9px 20px 0 19px;
-  border-left: 1px solid #dddddd;
+  border-left: 1px solid #ddd;
 }
 /* line 71, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/common/_typography.scss */
 blockquote cite {
@@ -335,7 +335,7 @@ abbr, acronym {
   text-transform: uppercase;
   font-size: 90%;
   color: #6a1f39;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
   cursor: help;
 }
 
@@ -390,7 +390,7 @@ abbr {
   /* Don't show links for images, or javascript/internal links */
   /* line 93, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/common/_typography.scss */
   pre, blockquote {
-    border: 1px solid #999999;
+    border: 1px solid #999;
     page-break-inside: avoid;
   }
 
@@ -593,7 +593,7 @@ select {
 /* Fieldsets */
 /* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/common/_forms.scss */
 fieldset {
-  border: solid 1px #dddddd;
+  border: solid 1px #ddd;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -2095,7 +2095,7 @@ div.button-bar ul.button-group:last-child {
 }
 /* line 25, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_navbar.scss */
 .nav-bar > li.has-flyout.is-touch > a.flyout-toggle {
-  border-left: 1px dashed #666666;
+  border-left: 1px dashed #666;
 }
 /* line 30, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_navbar.scss */
 .nav-bar > li > a:first-child {
@@ -2212,7 +2212,7 @@ ul.flyout, .nav-bar li ul {
 }
 /* line 65, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_navbar.scss */
 ul.flyout li, .nav-bar li ul li {
-  border-left: solid 3px #cccccc;
+  border-left: solid 3px #CCC;
 }
 /* line 66, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_navbar.scss */
 ul.flyout li a, .nav-bar li ul li a {
@@ -2704,7 +2704,7 @@ div.orbit-wrapper span.rotator {
   position: absolute;
   top: 0;
   left: -20px;
-  background: url('../images/foundation/orbit/rotator-black.png?1357126670') no-repeat;
+  background: url('../images/foundation/orbit/rotator-black.png?1357569580') no-repeat;
   z-index: 3;
 }
 /* line 27, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
@@ -2726,7 +2726,7 @@ div.orbit-wrapper span.mask {
 div.orbit-wrapper span.mask.move {
   width: 40px;
   left: 0;
-  background: url('../images/foundation/orbit/timer-black.png?1357126670') repeat 0 0;
+  background: url('../images/foundation/orbit/timer-black.png?1357569580') repeat 0 0;
 }
 /* line 32, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper span.pause {
@@ -2736,13 +2736,13 @@ div.orbit-wrapper span.pause {
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../images/foundation/orbit/pause-black.png?1357126670') no-repeat;
+  background: url('../images/foundation/orbit/pause-black.png?1357569580') no-repeat;
   z-index: 4;
   opacity: 0;
 }
 /* line 33, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper span.pause.active {
-  background: url('../images/foundation/orbit/pause-black.png?1357126670') no-repeat 0 -40px;
+  background: url('../images/foundation/orbit/pause-black.png?1357569580') no-repeat 0 -40px;
 }
 /* line 35, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper div.timer:focus span.pause, div.orbit-wrapper span.pause.active {
@@ -2789,24 +2789,24 @@ div.orbit-wrapper div.slider-nav span {
 }
 /* line 48, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper div.slider-nav span.right {
-  background: url('../images/foundation/orbit/right-arrow.png?1357126670');
+  background: url('../images/foundation/orbit/right-arrow.png?1357569580');
   background-size: 100%;
   right: 0;
 }
 /* line 49, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper div.slider-nav span.left {
-  background: url('../images/foundation/orbit/left-arrow.png?1357126670');
+  background: url('../images/foundation/orbit/left-arrow.png?1357569580');
   background-size: 100%;
   left: 0;
 }
 
 /* line 54, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 .lt-ie9 div.orbit-wrapper div.slider-nav span.right {
-  background: url('../images/foundation/orbit/right-arrow-small.png?1357126670');
+  background: url('../images/foundation/orbit/right-arrow-small.png?1357569580');
 }
 /* line 55, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 .lt-ie9 div.orbit-wrapper div.slider-nav span.left {
-  background: url('../images/foundation/orbit/left-arrow-small.png?1357126670');
+  background: url('../images/foundation/orbit/left-arrow-small.png?1357569580');
 }
 
 /* Bullet Nav ---------------------- */
@@ -2827,7 +2827,7 @@ ul.orbit-bullets li {
   cursor: pointer;
   color: #999999;
   text-indent: -9999px;
-  background: url('../images/foundation/orbit/bullets.jpg?1357126670') no-repeat 4px 0;
+  background: url('../images/foundation/orbit/bullets.jpg?1357569580') no-repeat 4px 0;
   width: 13px;
   height: 12px;
   overflow: hidden;
@@ -2994,7 +2994,7 @@ div.orbit, div.orbit-wrapper {
 
   /* line 34, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_reveal.scss */
   .reveal-modal {
-    border: solid 1px black;
+    border: solid 1px #000;
     background: #fff;
   }
 }
@@ -3132,11 +3132,11 @@ div.orbit, div.orbit-wrapper {
   text-decoration: none;
   font-size: 20px;
   font-weight: normal;
-  line-height: 0.5 !important;
+  line-height: .5 !important;
 }
 /* line 30, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_joyride.scss */
 .joyride-close-tip:hover, .joyride-close-tip:focus {
-  color: #eeeeee !important;
+  color: #eee !important;
 }
 
 /* line 33, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_joyride.scss */
@@ -3559,7 +3559,7 @@ ul.block-grid[data-clearing] {
 }
 /* line 42, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_tabs.scss */
 .tabs.pill.contained {
-  border-bottom: solid 1px #eeeeee;
+  border-bottom: solid 1px #eee;
   margin-bottom: 0;
 }
 /* line 44, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_tabs.scss */
@@ -4199,7 +4199,7 @@ ul.inline-list > li > *, ul.link-list > li > * {
 /* line 202, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_ui.scss */
 .th img {
   display: block;
-  border: solid 4px white;
+  border: solid 4px #fff;
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
@@ -4263,7 +4263,7 @@ table {
   -o-border-radius: 3px;
   border-radius: 3px;
   margin: 0 0 18px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
 }
 
 /* line 229, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_ui.scss */
@@ -4326,7 +4326,7 @@ table tbody tr td {
 ul.vcard {
   display: inline-block;
   margin: 0 0 12px 0;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   padding: 10px;
 }
 /* line 249, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_ui.scss */
@@ -5383,7 +5383,7 @@ table.hide-for-medium {
   /* line 278, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
   .nav-bar > li > a.main {
     text-align: left;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #ddd;
     border-right: none;
   }
   /* line 279, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
@@ -5521,7 +5521,7 @@ table.hide-for-medium {
   .tabs.mobile {
     width: auto;
     margin: 20px -20px 40px;
-    border-bottom: solid 1px #cccccc;
+    border-bottom: solid 1px #ccc;
     height: auto;
     margin: 20px -15px 0px -15px;
   }
@@ -5543,7 +5543,7 @@ table.hide-for-medium {
     border: none;
     border-left: none;
     border-right: none;
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #ccc;
     background: #fff;
   }
   /* line 321, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_mqueries.scss */
@@ -5941,4 +5941,34 @@ table.hide-for-medium {
   .top-bar ul > li.has-button a.button {
     margin: 0;
   }
+}
+/* line 7, ../../Private/sass/scss/rte.scss */
+span.label, span.label-radius {
+  padding: 1px 4px 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline;
+  position: relative;
+  bottom: 1px;
+  color: #fff;
+  background: #6a1f39;
+}
+
+/* line 22, ../../Private/sass/scss/rte.scss */
+span.label-radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* line 39, ../../Private/sass/scss/rte.scss */
+span.label, span.label-radius {
+  background-color: #6787a8;
+  color: black;
 }
