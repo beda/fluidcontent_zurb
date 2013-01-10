@@ -1,135 +1,156 @@
 {namespace v=Tx_Vhs_ViewHelpers}
-<f:section name="ZurbFoundationHeadIncludes">
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
-</f:section>
+    <f:section name="ZurbFoundationHeadIncludes">
 
-<f:section name="TopBar">
-    <div class="row">
-        <div class="twelve columns">
-            <nav class="top-bar">
-                <ul>
-                    <!-- Title Area -->
-                    <li class="name">
-                        <a href="#"><img src="http://placehold.it/200x40&text=[Logo]"/></a>
-                    </li>
-                    <li class="toggle-topbar"><a href="#"></a></li>
-                </ul>
+    </f:section>
 
-                <section>
-                    <v:page.menu
-                            entryLevel="0" classActive="active"
-                            classCurrent="current" classHasSubpages="has-dropdown"
-                            classFirst="first" classLast="last">
-                        <f:if condition="{menu}">
+    <f:section name="TopBar">
+        <div class="row">
+            <div class="twelve columns">
+                <nav class="top-bar">
+                    <ul>
+                        <!-- Title Area -->
+                        <li class="name">
+                            <f:link.page pageUid="{v:var.typoscript(path: 'lib.topbar.logo.pageUid')}">
+                                <f:if condition="{v:var.typoscript(path: 'lib.topbar.logo.file')}">
+                                    <f:then>
+                                        <f:image src="{v:var.typoscript(path: 'lib.topbar.logo.file')}"
+                                                 width="200"
+                                                 alt="{v:var.typoscript(path: 'lib.topbar.logo.alt')}"/>
+                                    </f:then>
+                                    <f:else>
+                                        <img src="http://placehold.it/200x40&text=[Logo]"/>
+                                    </f:else>
+                                </f:if>
+                            </f:link.page>
+                        </li>
+                        <li class="toggle-topbar"><a href="#"></a></li>
+                    </ul>
 
-                            <ul class="right">
-                                <f:for each="{menu}" as="level-one">
-                                    <li class="{level-one.class}">
-                                        <a href="{level-one.link}" class="{level-one.class}">{level-one.title}</a>
-                                        <f:if condition="{level-one.hasSubPages}">
-                                            <v:page.menu entryLevel="1" pageUid="{level-one.uid}">
-                                                <f:if condition="{menu}">
-                                                    <ul class="dropdown">
-                                                        <f:for each="{menu}" as="level-two">
-                                                            <li class="{level-two.class}">
-                                                                <a href="{level-two.link}"
-                                                                   class="{level-two.class}">{level-two.title}</a>
-                                                            </li>
-                                                        </f:for>
-                                                    </ul>
-                                                </f:if>
-                                            </v:page.menu>
-                                        </f:if>
-                                    </li>
-                                </f:for>
-                            </ul>
-                        </f:if>
-                    </v:page.menu>
-                </section>
-            </nav>
+                    <section>
+
+                        <v:page.menu
+                                entryLevel="{v:var.typoscript(path: 'lib.topbar.main.entryLevel')}" classActive="active"
+                                classCurrent="current" classHasSubpages="has-dropdown"
+                                classFirst="first" classLast="last">
+                            <f:if condition="{menu}">
+                                <ul class="right">
+                                    <f:for each="{menu}" as="level-one">
+                                        <li class="{level-one.class}">
+                                            <a href="{level-one.link}" class="{level-one.class}">{level-one.title}</a>
+                                            <f:if condition="{level-one.hasSubPages}">
+                                                <v:page.menu
+                                                        entryLevel="{v:var.typoscript(path: 'lib.topbar.sub.entryLevel')}"
+                                                        pageUid="{level-one.uid}">
+                                                    <f:if condition="{menu}">
+                                                        <ul class="dropdown">
+                                                            <f:for each="{menu}" as="level-two">
+                                                                <li class="{level-two.class}">
+                                                                    <a href="{level-two.link}"
+                                                                       class="{level-two.class}">{level-two.title}</a>
+                                                                </li>
+                                                            </f:for>
+                                                        </ul>
+                                                    </f:if>
+                                                </v:page.menu>
+                                            </f:if>
+                                        </li>
+                                    </f:for>
+                                </ul>
+                            </f:if>
+                        </v:page.menu>
+                    </section>
+                </nav>
+            </div>
         </div>
-    </div>
-</f:section>
+    </f:section>
 
-<f:section name="NavBar">
-    <v:page.menu entryLevel="0">
-        <ul class="nav-bar
+    <f:section name="NavBar">
+        <v:page.menu entryLevel="0">
+            <ul class="nav-bar
                    {f:if(then: 'right', else: '', condition: '{pinRight}')}
                    {f:if(then: 'vertical', else: '', condition: '{vertical}')}">
-            <f:for each="{menu}" as="mainPage" iteration="iteration">
-                <li class="{mainPage.class}"><a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
-                </li>
-            </f:for>
-        </ul>
-    </v:page.menu>
-</f:section>
-
-<f:section name="SideNav">
-    <v:page.menu entryLevel="0" includeSpacers="1">
-        <ul class="side-nav">
-            <f:for each="{menu}" as="mainPage" iteration="iteration">
-                <v:switch value="{mainPage.doktype}">
-                    <v:case case="199" break="TRUE">
-                        <li class="divider"></li>
-                    </v:case>
-                    <v:case case="default" break="TRUE">
-                        <li class="{mainPage.class}">
-                            <a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
-                        </li>
-                    </v:case>
-                </v:switch>
-            </f:for>
-        </ul>
-    </v:page.menu>
-</f:section>
-
-<f:section name="SubNav">
-    <v:page.menu entryLevel="0">
-        <dl class="sub-nav">
-            <dt>{f:if(then: '{subNavTitle}:', else: 'SubNav:', condition: '{subNavTitle}')}</dt>
-            <f:for each="{menu}" as="mainPage" iteration="iteration">
-                <dd class="{mainPage.class}">
-                    <a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
-                </dd>
-            </f:for>
-        </dl>
-    </v:page.menu>
-</f:section>
-
-<f:section name="Breadcrumbs">
-    <v:page.breadCrumb tagName="ul" tagNameChildren="li"
-                       entryLevel="0" class="breadcrumbs">
-    </v:page.breadCrumb>
-</f:section>
-
-<f:section name="PlaceholderImage">
-    <v:page.content.render column="{colPos}" as="ContentElements">
-        <f:if condition="{ContentElements}">
-            <f:then>
-                <f:for each="{ContentElements}" as="ContentElement">
-                    <f:format.raw>{ContentElement}</f:format.raw>
+                <f:for each="{menu}" as="mainPage" iteration="iteration">
+                    <li class="{mainPage.class}"><a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
+                    </li>
                 </f:for>
-            </f:then>
-            <f:else>
-                <v:format.placeholder.image text="{text}" width="{width}" height="{height}" backgroundColor="DDDDDD"
-                                            textColor="FFFFFF"/>
-            </f:else>
-        </f:if>
-    </v:page.content.render>
-</f:section>
+            </ul>
+        </v:page.menu>
+    </f:section>
 
-<f:section name="PlaceholderText">
-    <v:page.content.render column="{colPos}" as="ContentElements">
-        <f:if condition="{ContentElements}">
-            <f:then>
-                <f:for each="{ContentElements}" as="ContentElement">
-                    <f:format.raw>{ContentElement}</f:format.raw>
+    <f:section name="SideNav">
+        <v:page.menu entryLevel="0" includeSpacers="1">
+            <ul class="side-nav">
+                <f:for each="{menu}" as="mainPage" iteration="iteration">
+                    <v:switch value="{mainPage.doktype}">
+                        <v:case case="199" break="TRUE">
+                            <li class="divider"></li>
+                        </v:case>
+                        <v:case case="default" break="TRUE">
+                            <li class="{mainPage.class}">
+                                <a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
+                            </li>
+                        </v:case>
+                    </v:switch>
                 </f:for>
-            </f:then>
-            <f:else>
-                <p>Atem quodis ma vid que por sam volori bla earum auta delent molentionem ea volores simusame soloreiur
-                    rese int facesequi tes rectur, ut dignimi, que quist evendae. </p>
-            </f:else>
-        </f:if>
-    </v:page.content.render>
-</f:section>
+            </ul>
+        </v:page.menu>
+    </f:section>
+
+    <f:section name="SubNav">
+        <v:page.menu entryLevel="0">
+            <dl class="sub-nav">
+                <dt>{f:if(then: '{subNavTitle}:', else: 'SubNav:', condition: '{subNavTitle}')}</dt>
+                <f:for each="{menu}" as="mainPage" iteration="iteration">
+                    <dd class="{mainPage.class}">
+                        <a href="{mainPage.link}" class="{mainPage.class}">{mainPage.title}</a>
+                    </dd>
+                </f:for>
+            </dl>
+        </v:page.menu>
+    </f:section>
+
+    <f:section name="Breadcrumbs">
+        <v:page.breadCrumb tagName="ul" tagNameChildren="li"
+                           entryLevel="0" class="breadcrumbs">
+        </v:page.breadCrumb>
+    </f:section>
+
+    <f:section name="PlaceholderImage">
+        <v:page.content.render column="{colPos}" as="ContentElements">
+            <f:if condition="{ContentElements}">
+                <f:then>
+                    <f:for each="{ContentElements}" as="ContentElement">
+                        <f:format.raw>{ContentElement}</f:format.raw>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <v:format.placeholder.image text="{text}" width="{width}" height="{height}" backgroundColor="DDDDDD"
+                                                textColor="FFFFFF"/>
+                </f:else>
+            </f:if>
+        </v:page.content.render>
+    </f:section>
+
+    <f:section name="PlaceholderText">
+        <v:page.content.render column="{colPos}" as="ContentElements">
+            <f:if condition="{ContentElements}">
+                <f:then>
+                    <f:for each="{ContentElements}" as="ContentElement">
+                        <f:format.raw>{ContentElement}</f:format.raw>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <p>Atem quodis ma vid que por sam volori bla earum auta delent molentionem ea volores simusame
+                        soloreiur
+                        rese int facesequi tes rectur, ut dignimi, que quist evendae. </p>
+                </f:else>
+            </f:if>
+        </v:page.content.render>
+    </f:section>
+</div>

@@ -19,6 +19,24 @@ plugin.tx_fed.page.ZurbFoundation {
 }
 
 #---------------------------------------------------------------
+# Typoscript Configuration
+#---------------------------------------------------------------
+lib.topbar {
+    main {
+        entryLevel = 0
+    }
+    sub {
+        entryLevel = 1
+    }
+    logo {
+      #file = EXT:extension_name/Resources/Public/images/project/logo.png
+      #alt = Alt Text of image
+      #pageUid = 2
+    }
+}
+
+
+#---------------------------------------------------------------
 # CSS
 #---------------------------------------------------------------
 page.includeCSS {
