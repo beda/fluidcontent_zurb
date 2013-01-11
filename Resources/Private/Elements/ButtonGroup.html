@@ -1,56 +1,95 @@
-{namespace flux=Tx_Flux_ViewHelpers}
 {namespace v=Tx_Vhs_ViewHelpers}
-<f:layout name="FCE"/>
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
-<f:section name="Configuration">
-    <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-groups" label="Zurb Foundation: Button Groups"
-                   description="Places child content elements as button groups."
-                   icon="../typo3conf/ext/fluidcontent/Resources/Public/Icons/icon-twitter.png">
+    <f:layout name="FCE"/>
 
-        <flux:flexform.sheet name="display" label="Display">
-            <flux:flexform.field.checkbox name="radius" label="Make buttons with radius"/>
-        </flux:flexform.sheet>
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-groups" label="Zurb Foundation: Button Groups"
+                       description="Places child content elements as button groups."
+                       icon="../typo3conf/ext/fluidcontent/Resources/Public/Icons/icon-twitter.png">
 
-        <flux:flexform.sheet name="buttons" label="Buttons">
-            <flux:flexform.section name="buttons" label="Buttons">
-                <flux:flexform.object name="button" label="Button">
-                    <flux:flexform.field.input name="title" label="Button Text"/>
-                    <flux:flexform.field.input name="target" label="Link target">
-                        <flux:flexform.field.wizard.link/>
-                    </flux:flexform.field.input>
-                </flux:flexform.object>
-            </flux:flexform.section>
-        </flux:flexform.sheet>
+            <flux:flexform.sheet name="buttons-sheet" label="Buttons">
+                <flux:flexform.section name="buttons" label="Buttons">
+                    <flux:flexform.object name="button" label="Button">
+                        <flux:flexform.field.input name="title" label="Button text"/>
+                        <flux:flexform.field.input name="target" label="Link target">
+                            <flux:flexform.field.wizard.link/>
+                        </flux:flexform.field.input>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
 
-    </flux:flexform>
-</f:section>
+            <flux:flexform.sheet name="display-sheet" label="Display Options">
+                <flux:flexform.field.select name="buttons-appearance" label="Buttons Appearance"
+                                            commaSeparatedItems="edge,radius,round"/>
+                <flux:flexform.field.select name="buttons-distribution" label="Buttons Distribution"
+                                            commaSeparatedItems="uneven,two-up,three-up,four-up,five-up"/>
+            </flux:flexform.sheet>
+        </flux:flexform>
+    </f:section>
 
-<f:section name="Preview">
-    <ul>
-        <f:for each="{buttons}" as="button" iteration="iteration">
-            <li>{button.button.title}</li>
-        </f:for>
-    </ul>
-    <flux:widget.grid/>
-</f:section>
+    <f:section name="Preview">
+        <ul>
+            <f:for each="{buttons-section}" as="button" iteration="iteration">
+                <li>{button.button.title}</li>
+            </f:for>
+        </ul>
+        <flux:widget.grid/>
+    </f:section>
 
-<f:section name="Main">
-    <ul class="button-group {f:if(condition: radius, then: 'radius')} ">
-        <f:for each="{buttons}" as="button" iteration="iteration">
-            <li>
+    <f:section name="Main">
+        <v:switch value="{buttons-appearance}">
+            <v:case case="round" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: 'round')}
+            </v:case>
+            <v:case case="radius" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: 'radius')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: '')}
+            </v:case>
+        </v:switch>
+        <v:switch value="{buttons-distribution}">
+            <v:case case="two-up" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: 'even two-up')}
+            </v:case>
+            <v:case case="three-up" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: 'even three-up')}
+            </v:case>
+            <v:case case="four-up" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: 'even four-up')}
+            </v:case>
+            <v:case case="five-up" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: 'even five-up')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'button-appearance', value: '')}
+            </v:case>
+        </v:switch>
 
-                <f:if condition=" {v:call('intval', arguments: {0: button.button.target})} > 0">
-                    <f:then>
-                        <f:link.page pageUid="{button.button.target}"
-                                     class="button {f:if(condition: radius, then: 'radius')}">{button.button.title}
-                        </f:link.page>
-                    </f:then>
-                    <f:else>
-                        <a href="http://{button.button.target}"
-                           class="button {f:if(condition: radius, then: 'radius')}">{button.button.title}</a>
-                    </f:else>
-                </f:if>
-            </li>
-        </f:for>
-    </ul>
-</f:section>
+        <ul class="button-group {v:var.set(name: 'button-distribution', value: '')} {v:var.get(name: 'button-appearance')}">
+            <f:for each="{buttons}" as="button" iteration="iteration">
+                <li>
+                    <f:if condition=" {v:call('intval', arguments: {0: button.button.target})} > 0">
+                        <f:then>
+                            <f:link.page pageUid="{button.button.target}"
+                                         class="button {v:var.get(name: 'button-appearance')}">{button.button.title}
+                            </f:link.page>
+                        </f:then>
+                        <f:else>
+                            <a href="http://{button.button.target}"
+                               class="button {v:var.get(name: 'button-appearance')}">{button.button.title}</a>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </f:section>
+</div>
+
+
+
