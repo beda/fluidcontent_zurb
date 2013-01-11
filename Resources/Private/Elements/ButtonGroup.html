@@ -74,7 +74,7 @@
         <ul class="button-group {v:var.set(name: 'button-distribution', value: '')} {v:var.get(name: 'button-appearance')}">
             <f:for each="{buttons}" as="button" iteration="iteration">
                 <li>
-                    <f:if condition=" {v:call('intval', arguments: {0: button.button.target})} > 0">
+                    <f:if condition="{button.button.target -> v:math.round()} > 0">
                         <f:then>
                             <f:link.page pageUid="{button.button.target}"
                                          class="button {v:var.get(name: 'button-appearance')}">{button.button.title}
