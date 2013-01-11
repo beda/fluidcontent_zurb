@@ -26,6 +26,8 @@
                                             commaSeparatedItems="edge,radius,round"/>
                 <flux:flexform.field.select name="button-size" label="Button Size"
                                             commaSeparatedItems="tiny,small,medium,large"/>
+                <flux:flexform.field.select name="button-type" label="Button Type"
+                                            commaSeparatedItems="normal,secondary,success,alert"/>
             </flux:flexform.sheet>
         </flux:flexform>
     </f:section>
@@ -65,7 +67,23 @@
                 {v:var.set(name: 'button-size', value: '')}
             </v:case>
         </v:switch>
-        <div href="#" class="button dropdown {v:var.get(name: 'button-size')} {v:var.get(name: 'button-style')}">{buttonname}
+        <v:switch value="{button-type}">
+            <v:case case="secondary" break="TRUE">
+                {v:var.set(name: 'button-type', value: 'secondary')}
+            </v:case>
+            <v:case case="success" break="TRUE">
+                {v:var.set(name: 'button-type', value: 'success')}
+            </v:case>
+            <v:case case="alert" break="TRUE">
+                {v:var.set(name: 'button-type', value: 'alert')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'button-type', value: '')}
+            </v:case>
+        </v:switch>
+        <div href="#"
+             class="button dropdown {v:var.get(name: 'button-type')} {v:var.get(name: 'button-size')} {v:var.get(name: 'button-style')}">
+            {buttonname}
             <ul>
                 <f:for each="{buttons}" as="button" iteration="iteration">
                     <li>
