@@ -24,10 +24,12 @@
             <flux:flexform.sheet name="display-sheet" label="Display Options">
                 <flux:flexform.field.select name="button-style" label="Button Style"
                                             commaSeparatedItems="edge,radius,round"/>
-                <flux:flexform.field.select name="buttons-distribution" label="Buttons Distribution"
-                                            commaSeparatedItems="uneven,two-up,three-up,four-up,five-up"/>
+                <flux:flexform.field.select name="button-size" label="Button Size"
+                                            commaSeparatedItems="tiny,small,medium,large"/>
                 <flux:flexform.field.select name="button-type" label="Button Type"
                                             commaSeparatedItems="normal,secondary,success,alert"/>
+                <flux:flexform.field.select name="buttons-distribution" label="Buttons Distribution"
+                                            commaSeparatedItems="uneven,two-up,three-up,four-up,five-up"/>
             </flux:flexform.sheet>
         </flux:flexform>
     </f:section>
@@ -53,6 +55,34 @@
                 {v:var.set(name: 'button-style', value: '')}
             </v:case>
         </v:switch>
+        <v:switch value="{button-size}">
+              <v:case case="tiny" break="TRUE">
+                  {v:var.set(name: 'button-size', value: 'tiny')}
+              </v:case>
+              <v:case case="small" break="TRUE">
+                  {v:var.set(name: 'button-size', value: 'small')}
+              </v:case>
+              <v:case case="large" break="TRUE">
+                  {v:var.set(name: 'button-size', value: 'large')}
+              </v:case>
+              <v:case case="default" break="TRUE">
+                  {v:var.set(name: 'button-size', value: '')}
+              </v:case>
+          </v:switch>
+        <v:switch value="{button-type}">
+            <v:case case="secondary" break="TRUE">
+                {v:var.set(name: 'button-type', value: 'secondary')}
+            </v:case>
+            <v:case case="success" break="TRUE">
+                {v:var.set(name: 'button-type', value: 'success')}
+            </v:case>
+            <v:case case="alert" break="TRUE">
+                {v:var.set(name: 'button-type', value: 'alert')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'button-type', value: '')}
+            </v:case>
+        </v:switch>
         <v:switch value="{buttons-distribution}">
             <v:case case="two-up" break="TRUE">
                 {v:var.set(name: 'buttons-distribution', value: 'even two-up')}
@@ -70,32 +100,19 @@
                 {v:var.set(name: 'buttons-distribution', value: '')}
             </v:case>
         </v:switch>
-        <v:switch value="{button-type}">
-            <v:case case="secondary" break="TRUE">
-                {v:var.set(name: 'button-type', value: 'secondary')}
-            </v:case>
-            <v:case case="success" break="TRUE">
-                {v:var.set(name: 'button-type', value: 'success')}
-            </v:case>
-            <v:case case="alert" break="TRUE">
-                {v:var.set(name: 'button-type', value: 'alert')}
-            </v:case>
-            <v:case case="default" break="TRUE">
-                {v:var.set(name: 'button-type', value: '')}
-            </v:case>
-        </v:switch>
-        <ul class="button-group {v:var.get(name: 'buttons-distribution')} {v:var.get(name: 'buttons-type')} {v:var.get(name: 'button-style')}">
+        <ul class="button-group {v:var.get(name: 'buttons-distribution')} {v:var.get(name: 'button-size')} {v:var.get(name: 'buttons-type')} {v:var.get(name: 'button-style')}">
             <f:for each="{buttons}" as="button" iteration="iteration">
                 <li>
                     <f:if condition="{button.button.target -> v:math.round()} > 0">
                         <f:then>
                             <f:link.page pageUid="{button.button.target}"
-                                         class="button {v:var.get(name: 'button-type')} {v:var.get(name: 'button-style')}">{button.button.title}
+                                         class="button {v:var.get(name: 'button-type')} {v:var.get(name: 'button-size')} {v:var.get(name: 'button-style')}">
+                                {button.button.title}
                             </f:link.page>
                         </f:then>
                         <f:else>
                             <a href="http://{button.button.target}"
-                               class="button {v:var.get(name: 'button-type')} {v:var.get(name: 'button-style')}">{button.button.title}</a>
+                               class="button {v:var.get(name: 'button-type')} {v:var.get(name: 'button-size')} {v:var.get(name: 'button-style')}">{button.button.title}</a>
                         </f:else>
                     </f:if>
                 </li>
