@@ -1,0 +1,87 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-dropdown" label="Zurb Foundation: Dropdown Button" description="A button which creates a dropdown when you click them" icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-dropdown-icon.jpg">
+            <flux:flexform.sheet name="buttons-sheet" label="Buttons">
+                <flux:flexform.section name="buttons" label="Buttons">
+                    <flux:flexform.object name="button" label="Button">
+                        <flux:flexform.field.input name="title" label="Button text"/>
+                        <flux:flexform.field.input name="target" label="Link target">
+                            <flux:flexform.field.wizard.link/>
+                        </flux:flexform.field.input>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+
+            <flux:flexform.sheet name="display-sheet" label="Display Options">
+                {flux:flexform.field.input(name: 'buttonname', label: 'Button Name')}
+                <flux:flexform.field.select name="button-style" label="Buttons Style"
+                                            commaSeparatedItems="edge,radius,round"/>
+                <flux:flexform.field.select name="button-size" label="Button Size"
+                                            commaSeparatedItems="tiny,small,medium,large"/>
+            </flux:flexform.sheet>
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <ul>
+            <f:for each="{buttons-section}" as="button" iteration="iteration">
+                <li>{button.button.title}</li>
+            </f:for>
+        </ul>
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <v:switch value="{button-style}">
+            <v:case case="round" break="TRUE">
+                {v:var.set(name: 'button-style', value: 'round')}
+            </v:case>
+            <v:case case="radius" break="TRUE">
+                {v:var.set(name: 'button-style', value: 'radius')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'button-style', value: '')}
+            </v:case>
+        </v:switch>
+        <v:switch value="{button-size}">
+            <v:case case="tiny" break="TRUE">
+                {v:var.set(name: 'button-size', value: 'tiny')}
+            </v:case>
+            <v:case case="small" break="TRUE">
+                {v:var.set(name: 'button-size', value: 'small')}
+            </v:case>
+            <v:case case="large" break="TRUE">
+                {v:var.set(name: 'button-size', value: 'large')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'button-size', value: '')}
+            </v:case>
+        </v:switch>
+        <div href="#" class="button dropdown {v:var.get(name: 'button-size')} {v:var.get(name: 'button-style')}">{buttonname}
+            <ul>
+                <f:for each="{buttons}" as="button" iteration="iteration">
+                    <li>
+                        <f:if condition="{button.button.target -> v:math.round()} > 0">
+                            <f:then>
+                                <f:link.page pageUid="{button.button.target}">{button.button.title}
+                                </f:link.page>
+                            </f:then>
+                            <f:else>
+                                <a href="http://{button.button.target}">{button.button.title}</a>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:section>
+</div>
+
