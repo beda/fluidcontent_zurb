@@ -1,7 +1,6 @@
 @import "compass";
 @import "foundation/settings";
 @import "foundation/mixins/all";
-
 //Copy RTE classes from zurb-foundation source and create placeholders.
 
 %label {
@@ -43,6 +42,8 @@
 
 // Define your Classes for frontend and rte
 // Add your Classes to FILE:EXT:website_template/Configuration/TypoScript/System/tsconfig_page.txt
+// and include your page tsconfig in the root page
+// Add your Classes to the allowed classes
 // RTE.default.buttons.textstyle.tags.span.allowedClasses = label, label-radius
 
 span.label {
@@ -50,10 +51,25 @@ span.label {
   @extend %secondary;
 }
 
+h1.subheader,h2.subheader,h3.subheader,h4.subheader,h5.subheader,h6.subheader {
+  position: relative;
+}
+
+ul.circle {
+  list-style-type: circle;
+}
+ul.disc {
+  list-style-type: disc;
+}
+
+ul.square{
+  list-style-type: square;
+}
+
+
+// If you want to use the following Classes in frontend, you need to add them to your standard stylesheet as well.
 span.label-radius {
   @extend %label;
   @extend %secondary;
   @extend %radius;
 }
-
-

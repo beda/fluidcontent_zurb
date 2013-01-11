@@ -5942,7 +5942,7 @@ table.hide-for-medium {
     margin: 0;
   }
 }
-/* line 7, ../../Private/sass/scss/rte.scss */
+/* line 6, ../../Private/sass/scss/rte.scss */
 span.label, span.label-radius {
   padding: 1px 4px 2px;
   font-size: 12px;
@@ -5958,7 +5958,7 @@ span.label, span.label-radius {
   background: #6a1f39;
 }
 
-/* line 22, ../../Private/sass/scss/rte.scss */
+/* line 21, ../../Private/sass/scss/rte.scss */
 span.label-radius {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -5967,8 +5967,28 @@ span.label-radius {
   border-radius: 3px;
 }
 
-/* line 39, ../../Private/sass/scss/rte.scss */
+/* line 38, ../../Private/sass/scss/rte.scss */
 span.label, span.label-radius {
   background-color: #6787a8;
   color: black;
+}
+
+/* line 54, ../../Private/sass/scss/rte.scss */
+h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
+  position: relative;
+}
+
+/* line 58, ../../Private/sass/scss/rte.scss */
+ul.circle {
+  list-style-type: circle;
+}
+
+/* line 61, ../../Private/sass/scss/rte.scss */
+ul.disc {
+  list-style-type: disc;
+}
+
+/* line 65, ../../Private/sass/scss/rte.scss */
+ul.square {
+  list-style-type: square;
 }

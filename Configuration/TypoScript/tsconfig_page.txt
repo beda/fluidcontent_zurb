@@ -1,6 +1,9 @@
 # Important: Add to root Page in the Resources Tab under TS configuration
 # tsconfig_user CONFIGURATION
 # <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidcontent_zurb/Configuration/TypoScript/System/tsconfig_page.txt">
+# Configure Extension rtehtmlarea in Extensionmanager:
+# Typical
+# Enable additional inline elements = true
 
 ############################################################################
 ##  RTE
@@ -50,9 +53,10 @@ RTE.default {
 	//	rowinsertunder, rowdelete, rowsplit, bar, columnproperties, columninsertbefore, columninsertafter, columndelete,
 	//	columnsplit, bar, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge
 
+  //Add or remove Buttons from the following list to show or hide buttons in rte
 	toolbarOrder (
 		formatblock, blockstyle, textstyle, chMode, inserttag, removeformat,
-		bold, italic, underline, bar, subscript,superscript,bar,orderedlist, unorderedlist, bar, link
+		bold, italic, underline, bar, orderedlist, unorderedlist, bar, link, bar, code, small, keyboard
 	)
 
 		// Enable status bar (htmlArea RTE only)
@@ -65,7 +69,6 @@ RTE.default {
 
 	// modify some default settings
 	proc.entryHTMLparser_db.tags {
-		// we do not like default settings for p
 		p >
 		div.fixAttrib.align.unset = 0
 		img.allowedAttribs = alt,title,src,width,height
@@ -74,13 +77,14 @@ RTE.default {
 
   buttons{
     formatblock {
-      removeItems = pre,address,h5,h6
-      orderItems =
-      addItemse
-      //items.[item-name].label=
+      removeItems = pre,address,section,aside,blockquote,article,nav,header,footer,h5,h6
+      orderItems = p,h1,h2,h3,h4,h5,h6
     }
-    textstyle.showTagFreeClasses = 1
-    textstyle.tags.span.allowedClasses = label, label-radius
+    blockstyle.tags.h*.allowedClasses = subheader
+    textstyle {
+      showTagFreeClasses = 1
+      tags.span.allowedClasses = label, label-radius
+    }
     image.options.removeItems = magic   //Mögliche Optionen: magic, plain, dragdrop, image
   }
 
