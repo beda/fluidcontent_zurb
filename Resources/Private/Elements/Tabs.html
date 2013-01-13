@@ -75,7 +75,7 @@
         <f:if condition="{tabs}">
             <dl class="tabs {f:if(condition: '{tabs-distribution}', then: '{tabs-distribution}')} {f:if(condition: '{contained}', then: 'contained')} {f:if(condition: '{mobile}', then: 'mobile')} {f:if(condition: '{0: mode} == {0: "pill"}', then: 'pill')} {f:if(condition: '{0: mode} == {0: "vertical"}', then: 'vertical')} ">
             <f:for each="{tabs}" as="tab" iteration="iteration">
-                <dd class="{f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'active')}">
+                <dd class="{f:if(condition: '{tab.tab.hide-for-small}', then: 'hide-for-small')} {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'active')}">
                     <a href="#simple{iteration.index}">{tab.tab.title}</a>
                 </dd>
             </f:for>
