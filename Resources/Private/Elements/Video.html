@@ -1,0 +1,30 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-video" label="Zurb Foundation: Video Element"
+                       description="Add an intrinsic ratio that will properly scale your video on any device"
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-dropdown-icon.jpg">
+            {flux:flexform.field.input(name: 'embedcode', label: 'Video Embed Code')}
+            <flux:flexform.field.checkbox name="widescreen" label="Widescreen Mode" />
+            <flux:flexform.field.checkbox name="vimeo" label="Vimeo" />
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="flex-video {f:if(condition: '{widescreen}', then: 'widescreen')} {f:if(condition: '{vimeo}', then: 'vimeo')}">
+            <f:format.raw>{embedcode}</f:format.raw>
+        </div>
+    </f:section>
+</div>
+
