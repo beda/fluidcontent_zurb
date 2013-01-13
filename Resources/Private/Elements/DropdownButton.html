@@ -23,7 +23,7 @@
             <flux:flexform.sheet name="display-sheet" label="Display Options">
                 {flux:flexform.field.input(name: 'buttonname', label: 'Button Name')}
                 <flux:flexform.field.select name="button-style" label="Buttons Style"
-                                            commaSeparatedItems="edge,radius,round"/>
+                                            commaSeparatedItems="edge,radius"/>
                 <flux:flexform.field.select name="button-size" label="Button Size"
                                             commaSeparatedItems="tiny,small,medium,large"/>
                 <flux:flexform.field.select name="button-type" label="Button Type"
@@ -43,9 +43,6 @@
 
     <f:section name="Main">
         <v:switch value="{button-style}">
-            <v:case case="round" break="TRUE">
-                {v:var.set(name: 'button-style', value: 'round')}
-            </v:case>
             <v:case case="radius" break="TRUE">
                 {v:var.set(name: 'button-style', value: 'radius')}
             </v:case>
