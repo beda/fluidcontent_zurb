@@ -1,0 +1,55 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-inline-list" label="Zurb Foundation: Inline List" description="Horizontal list of links" icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/inline-list-icon.jpg">
+            <flux:flexform.sheet name="inline-list" label="Inline List">
+                <flux:flexform.section name="links" label="Links">
+                    <flux:flexform.object name="link" label="Link">
+                        <flux:flexform.field.input name="title" label="Title"/>
+                        <flux:flexform.field.input name="target" label="Link target">
+                            <flux:flexform.field.wizard.link/>
+                        </flux:flexform.field.input>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <ul>
+            <f:for each="{buttons-section}" as="button" iteration="iteration">
+                <li>{button.button.title}</li>
+            </f:for>
+        </ul>
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <ul class="inline-list">
+            <f:for each="{links}" as="link" iteration="iteration">
+                <li>
+                    <f:if condition="{link.link.target -> v:math.round()} > 0">
+                        <f:then>
+                            <f:link.page pageUid="{link.link.target}">
+                                {link.link.title}
+                            </f:link.page>
+                        </f:then>
+                        <f:else>
+                            <a href="http://{link.link.target}">{button.button.title}</a>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </f:section>
+</div>
+
+
+
