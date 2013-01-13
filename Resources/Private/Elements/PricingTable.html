@@ -1,0 +1,57 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-pricing-table" label="Zurb Foundation: Pricing Table" description="Create a pricing table for your rockin' marketing site " icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-groups-icon.jpg">
+            <flux:flexform.sheet name="pricingtable-sheet" label="Pricing Table">
+                <flux:flexform.field.input name="title" label="Title"/>
+                <flux:flexform.field.input name="price" label="Price"/>
+                <flux:flexform.field.text name="description" label="Description" enableRichText="true"/>
+                <flux:flexform.field.input name="cta-button" label="Call to Action"/>
+                <flux:flexform.field.input name="target" label="Link target">
+                    <flux:flexform.field.wizard.link/>
+                </flux:flexform.field.input>
+                <flux:flexform.section name="bullets" label="Bullets">
+                    <flux:flexform.object name="bullet-item" label="Bullets">
+                        <flux:flexform.field.input name="name" label="Item"/>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <ul class="pricing-table">
+            <li class="title">{title}</li>
+            <li class="price">{price}</li>
+            <li class="description">{description}</li>
+            <f:for each="{bullets}" as="bullet-item" iteration="iteration">
+                <li class="bullet-item">{bullet-item.bullet-item.name}</li>
+            </f:for>
+            <li class="cta-button">
+                <f:if condition="{target -> v:math.round()} > 0">
+                    <f:then>
+                        <f:link.page pageUid="{target}" class="button">
+                            {cta-button}
+                        </f:link.page>
+                    </f:then>
+                    <f:else>
+                        <a href="http://{target}" class="button">{cta-button}</a>
+                    </f:else>
+                </f:if>
+            </li>
+        </ul>
+    </f:section>
+</div>
+
+
