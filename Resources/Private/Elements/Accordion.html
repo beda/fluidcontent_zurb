@@ -1,0 +1,60 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+    <f:layout name="FCE"/>
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="foundation-accordion"
+                       label="Zurb Foundation: Accordion with content elements"
+                       description="Places child content elements within accordion."
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/accordion-icon.jpg">
+
+            <flux:flexform.sheet name="accordions" label="Accordions">
+                <flux:flexform.section name="accordions" label="Accordions">
+                    <flux:flexform.object name="accordion-item" label="Accordion Item">
+                        <flux:flexform.field.input name="title" label="Accordion title"/>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+
+            <flux:flexform.grid>
+                <f:if condition="{accordions}">
+                    <f:for each="{accordions}" as="accordion-item" iteration="iteration">
+                        <flux:flexform.grid.row>
+                            <flux:flexform.grid.column>
+                                <flux:flexform.content name="accordion-item.{iteration.index}"
+                                                       label="Content, Accordion {iteration.cycle}"/>
+                            </flux:flexform.grid.column>
+                        </flux:flexform.grid.row>
+                    </f:for>
+                </f:if>
+            </flux:flexform.grid>
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <v:var.set name="activeAccordionIndex" value="0"/>
+
+        <ul class="accordion">
+            <f:if condition="{accordions}">
+                <f:for each="{accordions}" as="accordion-item" iteration="iteration">
+                    <li class="{f:if(condition: '{activeAccordionIndex} == {iteration.index}', then: 'active')}">
+                        <div class="title">
+                            <h5>{accordion-item.accordion-item.title}</h5>
+                        </div>
+                        <div class="content">
+                            <flux:flexform.renderContent area="accordion-item.{iteration.index}"/>
+                        </div>
+                    </li>
+                </f:for>
+            </f:if>
+        </ul>
+    </f:section>
+</div>
