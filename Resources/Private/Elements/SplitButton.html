@@ -8,9 +8,7 @@
     <f:layout name="FCE"/>
 
     <f:section name="Configuration">
-        <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-split" label="Zurb Foundation: Split Button"
-                       description="A button which has a main action and creates a dropdown with further actions when you click the dropdown icon"
-                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-split-icon.jpg">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-split" label="Zurb Foundation: Split Button" description="A button which has a main action and creates a dropdown with further actions when you click the dropdown icon" icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-split-icon.jpg">
             <flux:flexform.sheet name="buttons-sheet" label="Buttons">
                 {flux:flexform.field.input(name: 'buttonname', label: 'Button Name')}
                 <flux:flexform.field.input name="main-target" label="Link target">
@@ -104,15 +102,4 @@
             </ul>
         </div>
     </f:section>
-</div>
-
-<div href="#" class="large alert button split dropdown">
-    <a href="#">Split Button</a>
-    <span></span>
-    <ul>
-        <li><a href="#">Dropdown Item</a></li>
-        <li><a href="#">Another Dropdown Item</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Last Item</a></li>
-    </ul>
 </div>
