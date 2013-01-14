@@ -1,0 +1,70 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-reveal" label="Zurb Foundation: Reveal" description="Places child content elements as Modal windows" icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/reveal-icon.jpg">
+            <flux:flexform.sheet name="modals-sheet" label="Modals">
+                <flux:flexform.section name="modals" label="Modals">
+                    <flux:flexform.object name="modal" label="Modal">
+                        <flux:flexform.field.input name="id"
+                                                   label="Modal id; add this value to the data-reveal-id argument"/>
+                        <flux:flexform.field.select name="modal-size" label="Modal size"
+                                                    commaSeparatedItems="small,medium,large,xlarge,expand"/>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+
+            <flux:flexform.grid>
+                <f:if condition="{modals}">
+                    <f:for each="{modals}" as="modal" iteration="iteration">
+                        <flux:flexform.grid.row>
+                            <flux:flexform.grid.column>
+                                <flux:flexform.content name="Modal.{iteration.index}"
+                                                       label="Content of Modal.{iteration.cycle} with data-reveal-id='{modal.modal.id}' "/>
+                            </flux:flexform.grid.column>
+                        </flux:flexform.grid.row>
+                    </f:for>
+                </f:if>
+            </flux:flexform.grid>
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <f:for each="{modals}" as="modal" iteration="iteration">
+            <v:switch value="{modal.modal.modal-size}">
+                <v:case case="small" break="TRUE">
+                    {v:var.set(name: 'modal-size', value: 'small')}
+                </v:case>
+                <v:case case="medium" break="TRUE">
+                    {v:var.set(name: 'modal-size', value: 'medium')}
+                </v:case>
+                <v:case case="large" break="TRUE">
+                    {v:var.set(name: 'modal-size', value: 'large')}
+                </v:case>
+                <v:case case="xlarge" break="TRUE">
+                    {v:var.set(name: 'modal-size', value: 'xlarge')}
+                </v:case>
+                <v:case case="default" break="TRUE">
+                    {v:var.set(name: 'modal-size', value: 'expand')}
+                </v:case>
+            </v:switch>
+            <div id="{modal.modal.id}" class="reveal-modal {v:var.get(name: 'modal-size')}">
+                <flux:flexform.renderContent area="modal.{iteration.index}"/>
+                <a class="close-reveal-modal">&#215;</a>
+            </div>
+        </f:for>
+    </f:section>
+</div>
+
+
+
