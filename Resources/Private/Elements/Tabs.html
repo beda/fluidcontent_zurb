@@ -11,7 +11,7 @@
                        label="Zurb Foundation: Tabs/pills with content elements"
                        description="Places child content elements in tabs."
                        icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/tabs-icon.jpg">
-        <flux:flexform.sheet name="display" label="Display">
+            <flux:flexform.sheet name="display" label="Display">
                 <flux:flexform.field.select name="mode" label="Display mode" commaSeparatedItems="tab,pill,vertical"
                                             requestUpdate="TRUE"/>
                 <f:if condition="{0: mode} == {0: 'tab'}">
@@ -72,13 +72,24 @@
     </f:section>
 
     <f:section name="Tabs">
+        <v:switch value="{0: mode}">
+            <v:case case="{0: 'pill'}" break="TRUE">
+                {v:var.set(name: 'tab-mode', value: 'pill')}
+            </v:case>
+            <v:case case="{0: 'vertical'}" break="TRUE">
+                {v:var.set(name: 'tab-mode', value: 'vertical')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'tab-mode', value: '')}
+            </v:case>
+        </v:switch>
         <f:if condition="{tabs}">
-            <dl class="tabs {f:if(condition: '{tabs-distribution}', then: '{tabs-distribution}')} {f:if(condition: '{contained}', then: 'contained')} {f:if(condition: '{mobile}', then: 'mobile')} {f:if(condition: '{0: mode} == {0: "pill"}', then: 'pill')} {f:if(condition: '{0: mode} == {0: "vertical"}', then: 'vertical')} ">
-            <f:for each="{tabs}" as="tab" iteration="iteration">
-                <dd class="{f:if(condition: '{tab.tab.hide-for-small}', then: 'hide-for-small')} {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'active')}">
-                    <a href="#simple{iteration.index}">{tab.tab.title}</a>
-                </dd>
-            </f:for>
+            <dl class="tabs {f:if(condition: '{tabs-distribution}', then: '{tabs-distribution}')} {f:if(condition: '{contained}', then: 'contained')} {f:if(condition: '{mobile}', then: 'mobile')}  {v:var.get(name: 'tab-mode')} ">
+                <f:for each="{tabs}" as="tab" iteration="iteration">
+                    <dd class="{f:if(condition: '{tab.tab.hide-for-small}', then: 'hide-for-small')} {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'active')}">
+                        <a href="#simple{iteration.index}">{tab.tab.title}</a>
+                    </dd>
+                </f:for>
             </dl>
         </f:if>
     </f:section>
