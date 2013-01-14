@@ -1,0 +1,117 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-clearing" label="Zurb Foundation: Clearing"
+                       description="Clearing gives you the ability to create responsive lightboxes that are easy"
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/clearing-icon.jpg">
+            <flux:flexform.sheet name="thumbnails" label="Thumbnails">
+                <flux:flexform.section name="thumbnails" label="Thumbnails">
+                    <f:render section="ImageObject" arguments="{_all}"/>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+
+            <flux:flexform.sheet name="display-sheet" label="Display Options">
+                <flux:flexform.field.checkbox name="clearing-feature" label="Only show first element as thumbnail"/>
+                <flux:flexform.field.checkbox name="thumbnail-style"
+                                              label="Thumbnail Style: Adds border and hover effect"/>
+                <flux:flexform.field.select name="thumbnail-distribution" label="Thumbnail Distribution"
+                                            commaSeparatedItems="uneven,two-up,three-up,four-up,five-up"/>
+                <flux:flexform.field.select name="mobile-thumbnail-distribution" label="Mobile Thumbnail Distribution"
+                                            commaSeparatedItems="stacked,two-up,three-up,four-up,five-up"/>
+            </flux:flexform.sheet>
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="SharedObject">
+
+    </f:section>
+
+    <f:section name="ImageObject">
+        <flux:flexform.object name="image" label="Image">
+            <f:render section="SharedObject" arguments="{_all}"/>
+            <flux:flexform.field.input name="file" label="File" eval="trim">
+                <flux:flexform.field.wizard.link/>
+            </flux:flexform.field.input>
+            <flux:flexform.field.input name="title" label="Alt text for image"/>
+            <flux:flexform.field.text name="caption" label="Caption text (optional)"/>
+        </flux:flexform.object>
+    </f:section>
+
+    <f:section name="Preview">
+        <f:for each="{thumbnails}" as="itemSectionObject" iteration="iteration">
+            <v:var.set name="object" value="{itemSectionObject.image}"/>
+            <img src="../../../{f:uri.image(src: '{object.file}', minWidth: 30, maxWidth: 100)}" alt="{object.file}"/>
+        </f:for>
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+        <v:switch value="{thumbnail-distribution}">
+            <v:case case="two-up" break="TRUE">
+                {v:var.set(name: 'thumbnail-distribution', value: 'block-grid two-up')}
+            </v:case>
+            <v:case case="three-up" break="TRUE">
+                {v:var.set(name: 'thumbnail-distribution', value: 'block-grid three-up')}
+            </v:case>
+            <v:case case="four-up" break="TRUE">
+                {v:var.set(name: 'thumbnail-distribution', value: 'block-grid four-up')}
+            </v:case>
+            <v:case case="five-up" break="TRUE">
+                {v:var.set(name: 'thumbnail-distribution', value: 'block-grid five-up')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'thumbnail-distribution', value: '')}
+            </v:case>
+        </v:switch>
+        <v:switch value="{mobile-thumbnail-distribution}">
+            <v:case case="two-up" break="TRUE">
+                {v:var.set(name: 'mobile-thumbnail-distribution', value: 'mobile-two-up')}
+            </v:case>
+            <v:case case="three-up" break="TRUE">
+                {v:var.set(name: 'mobile-thumbnail-distribution', value: 'mobile-three-up')}
+            </v:case>
+            <v:case case="four-up" break="TRUE">
+                {v:var.set(name: 'mobile-thumbnail-distribution', value: 'mobile-four-up')}
+            </v:case>
+            <v:case case="five-up" break="TRUE">
+                {v:var.set(name: 'mobile-thumbnail-distribution', value: 'mobile-five-up')}
+            </v:case>
+            <v:case case="default" break="TRUE">
+                {v:var.set(name: 'mobile-thumbnail-distribution', value: 'mobile')}
+            </v:case>
+        </v:switch>
+        <div class="row">
+            <div class="twelve columns">
+                <ul class="{v:var.get(name: 'thumbnail-distribution')}  {v:var.get(name: 'mobile-thumbnail-distribution')}"
+                    data-clearing>
+                    <f:for each="{thumbnails}" as="itemSectionObject" iteration="iteration">
+                        <v:var.set name="object" value="{itemSectionObject.image}"/>
+                        <f:if condition="{iteration.index} == 0">
+                            <f:then>
+                                <f:if condition="{clearing-feature}">
+                                    <v:var.set name="featured" value="clearing-feature"/>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <v:var.set name="featured" value=""/>
+                            </f:else>
+                        </f:if>
+                        <li class="{v:var.get(name: 'featured')}">
+                            <a class="{f:if(condition: '{thumbnail-style}', then: 'th')}"
+                               href="{f:uri.image(src: '{object.file}', maxWidth: 800, maxHeight: 600)}">
+                                <f:image src="{object.file}" alt="{object.title}" width="175c" height="175c"
+                                         additionalAttributes="{data-caption:'{object.caption}'}"/>
+                            </a>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </div>
+    </f:section>
+</div>
