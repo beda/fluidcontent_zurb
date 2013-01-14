@@ -8,10 +8,12 @@
     <f:layout name="FCE"/>
 
     <f:section name="Configuration">
-        <flux:flexform wizardTab="Zurb Foundation" id="zurb-video" label="Zurb Foundation: Video Element" description="Add an intrinsic ratio that will properly scale your video on any device" icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/video-icon.jpg">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-video" label="Zurb Foundation: Video Element"
+                       description="Add an intrinsic ratio that will properly scale your video on any device"
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/video-icon.jpg">
             {flux:flexform.field.input(name: 'embedcode', label: 'Video Embed Code')}
-            <flux:flexform.field.checkbox name="widescreen" label="Widescreen Mode" />
-            <flux:flexform.field.checkbox name="vimeo" label="Vimeo" />
+            <flux:flexform.field.checkbox name="widescreen" label="Widescreen Mode"/>
+            <flux:flexform.field.checkbox name="vimeo" label="Vimeo"/>
         </flux:flexform>
     </f:section>
 

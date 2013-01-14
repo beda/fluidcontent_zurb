@@ -7,8 +7,11 @@
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
     <f:layout name="FCE"/>
     <f:section name="Configuration">
-        <flux:flexform wizardTab="Zurb Foundation" id="foundation-tabs" label="Zurb Foundation: Tabs/pills with content elements" description="Places child content elements in tabs." icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/tabs-icon.jpg">
-            <flux:flexform.sheet name="display" label="Display">
+        <flux:flexform wizardTab="Zurb Foundation" id="foundation-tabs"
+                       label="Zurb Foundation: Tabs/pills with content elements"
+                       description="Places child content elements in tabs."
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/tabs-icon.jpg">
+        <flux:flexform.sheet name="display" label="Display">
                 <flux:flexform.field.select name="mode" label="Display mode" commaSeparatedItems="tab,pill,vertical"
                                             requestUpdate="TRUE"/>
                 <f:if condition="{0: mode} == {0: 'tab'}">

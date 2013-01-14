@@ -6,7 +6,9 @@
      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
     <f:layout name="FCE"/>
     <f:section name="Configuration">
-        <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-split" label="Zurb Foundation: Split Button" description="A button which has a main action and creates a dropdown with further actions when you click the dropdown icon" icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-split-icon.jpg">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-button-split" label="Zurb Foundation: Split Button"
+                       description="LLL:EXT:fluidcontent_zurb/Resources/Private/Language/locallang.xlf:zurb.splitbutton.desc"
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/button-split-icon.jpg">
             <flux:flexform.sheet name="buttons-sheet" label="Buttons">
                 {flux:flexform.field.input(name: 'buttonname', label: 'Button Name')}
                 <flux:flexform.field.input name="main-target" label="Link target">
@@ -79,7 +81,7 @@
                 {v:var.set(name: 'button-type', value: '')}
             </v:case>
         </v:switch>
-        <f:translate key='LLL:EXT:fluidcontent_zurb/Resources/Private/Language/locallang.xlf:zurb.splitbutton.desc' />
+        <f:translate key='LLL:EXT:fluidcontent_zurb/Resources/Private/Language/locallang.xlf:zurb.splitbutton.desc'/>
         <div href="#"
              class="button split dropdown {v:var.get(name: 'button-type')} {v:var.get(name: 'button-size')} {v:var.get(name: 'button-style')}">
             <f:link.page pageUid="{main-target}">{buttonname}</f:link.page>
