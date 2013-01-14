@@ -1,0 +1,81 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace flux=Tx_Flux_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+    <f:layout name="FCE"/>
+
+    <f:section name="Configuration">
+        <flux:flexform wizardTab="Zurb Foundation" id="zurb-orbit-content" label="Zurb Foundation: Orbit Content Slider"
+                       description="Responsive content slider: While Orbit was created as a simple image slider, it also supports div elements with arbitrary content. You could have a slider of text blocks, actions, or really anything"
+                       icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/orbit-content-icon.jpg">
+            <flux:flexform.sheet name="content-slider" label="Content Slider">
+                <flux:flexform.field.input name="id" label="ID of Content Slider, e.g. 'content-slider'"/>
+                <flux:flexform.field.input name="aspect-ratio" label="Aspect Ration of Content-items, e.g '16x9'"/>
+                <flux:flexform.section name="content-slider" label="Content Slider">
+                    <flux:flexform.object name="content-item" label="Content Item">
+                        <flux:flexform.field.input name="title" label="Content Item title"/>
+                    </flux:flexform.object>
+                </flux:flexform.section>
+            </flux:flexform.sheet>
+            <flux:flexform.grid>
+                <f:if condition="{content-slider}">
+                    <f:for each="{content-slider}" as="content-item" iteration="iteration">
+                        <flux:flexform.grid.row>
+                            <flux:flexform.grid.column>
+                                <flux:flexform.content name="content-item.{iteration.index}"
+                                                       label="Content-Item {iteration.cycle}"/>
+                            </flux:flexform.grid.column>
+                        </flux:flexform.grid.row>
+                    </f:for>
+                </f:if>
+            </flux:flexform.grid>
+
+        </flux:flexform>
+    </f:section>
+
+    <f:section name="Preview">
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+
+        <v:page.header >
+
+            <script><![CDATA[
+                 $(document).ready(function () {
+                    $('#]]>{id}<![CDATA[').orbit({
+                        animation:'horizontal-slide', // fade, horizontal-slide, vertical-slide, horizontal-push
+                        animationSpeed:800, // how fast animtions are
+                        timer:true, // true or false to have the timer
+                        resetTimerOnClick:false, // true resets the timer instead of pausing slideshow progress
+                        advanceSpeed:4000, // if timer is enabled, time between transitions
+                        pauseOnHover:false, // if you hover pauses the slider
+                        startClockOnMouseOut:false, // if clock should start on MouseOut
+                        startClockOnMouseOutAfter:1000, // how long after MouseOut should the timer start again
+                        directionalNav:true, // manual advancing directional navs
+                        captions:false, // do you want captions?
+                        captionAnimation:'fade', // fade, slideOpen, none
+                        captionAnimationSpeed:800, // if so how quickly should they animate in
+                        bullets:false, // true or false to activate the bullet navigation
+                        bulletThumbs:false, // thumbnails for the bullets
+                        bulletThumbLocation:'', // location from this file where thumbs will be
+                        afterSlideChange:function () {
+                        }, // empty function
+                        fluid:']]>{aspect-ratio}<![CDATA['                       // or set a aspect ratio for content slides (ex: '4x3')
+                    });
+                });]]>
+            </script>
+
+        </v:page.header>
+
+        <div id="{id}">
+            <f:for each="{content-slider}" as="content-item" iteration="iteration">
+                <div>
+                         <flux:flexform.renderContent area="content-item.{iteration.index}"/>
+                </div>
+            </f:for>
+        </div>
+    </f:section>
+</div>
