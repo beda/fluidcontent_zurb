@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="fluidcontent_zurb">
+		<header/>
+		<body>
+			<trans-unit id="zurb.splitbutton.desc" xml:space="preserve">
+				<source>A button which has a main action and creates a dropdown with further actions when you click the dropdown icon</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
