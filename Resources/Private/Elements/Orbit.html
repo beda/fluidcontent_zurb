@@ -11,6 +11,7 @@
                        description="Responsive slider"
                        icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/orbit-icon.jpg">
             <flux:flexform.sheet name="thumbnails" label="Thumbnails">
+                <flux:flexform.field.input name="id" label="ID of Slider, e.g. 'featured'"/>
                 <flux:flexform.section name="thumbnails" label="Thumbnails">
                     <f:render section="ImageObject" arguments="{_all}"/>
                 </flux:flexform.section>
@@ -47,9 +48,9 @@
     <f:section name="Main">
 
         <v:page.header>
-            <script>
+            <script><![CDATA[
                 $(document).ready(function () {
-                    $('#featured').orbit({
+                    $('#]]>{id}<![CDATA[').orbit({
                         animation:'fade', // fade, horizontal-slide, vertical-slide, horizontal-push
                         animationSpeed:800, // how fast animtions are
                         timer:true, // true or false to have the timer
@@ -59,7 +60,7 @@
                         startClockOnMouseOut:false, // if clock should start on MouseOut
                         startClockOnMouseOutAfter:1000, // how long after MouseOut should the timer start again
                         directionalNav:true, // manual advancing directional navs
-                        captions:false, // do you want captions?
+                        captions:true, // do you want captions?
                         captionAnimation:'fade', // fade, slideOpen, none
                         captionAnimationSpeed:800, // if so how quickly should they animate in
                         bullets:false, // true or false to activate the bullet navigation
@@ -69,7 +70,7 @@
                         }, // empty function
                         fluid:true                         // or set a aspect ratio for content slides (ex: '4x3')
                     });
-                });
+                });]]>
             </script>
 
         </v:page.header>
@@ -81,7 +82,7 @@
 
                 <div data-caption="#caption-{iteration.index}">
                     <f:image src="{object.file}" alt="{object.title}"/>
-                    <span class="orbit-caption" id="caption-{iteration.index}"><strong>{object.header}</strong> - {object.caption}</span>
+                    <span class="orbit-caption" id="caption-{iteration.index}"><strong>{object.header}</strong> {object.caption}</span>
                 </div>
             </f:for>
         </div>
