@@ -13,6 +13,7 @@
             <flux:flexform.sheet name="content-slider" label="Content Slider">
                 <flux:flexform.field.input name="id" label="ID of Content Slider, e.g. 'content-slider'"/>
                 <flux:flexform.field.input name="aspect-ratio" label="Aspect Ration of Content-items, e.g '16x9'"/>
+                <flux:flexform.field.checkbox name="directionalNav" label="Show directional navigation"/>
                 <flux:flexform.section name="content-slider" label="Content Slider">
                     <flux:flexform.object name="content-item" label="Content Item">
                         <flux:flexform.field.input name="title" label="Content Item title"/>
@@ -54,7 +55,7 @@
                         pauseOnHover:false, // if you hover pauses the slider
                         startClockOnMouseOut:false, // if clock should start on MouseOut
                         startClockOnMouseOutAfter:1000, // how long after MouseOut should the timer start again
-                        directionalNav:true, // manual advancing directional navs
+                        directionalNav:]]>{directionalNav}<![CDATA[, // manual advancing directional navs
                         captions:false, // do you want captions?
                         captionAnimation:'fade', // fade, slideOpen, none
                         captionAnimationSpeed:800, // if so how quickly should they animate in
