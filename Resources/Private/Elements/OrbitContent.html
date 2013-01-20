@@ -12,6 +12,7 @@
                        icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/orbit-content-icon.jpg">
             <flux:flexform.sheet name="content-slider" label="Content Slider">
                 <flux:flexform.field.input name="id" label="ID of Content Slider, e.g. 'content-slider'"/>
+                <flux:flexform.field.input name="additionalClasses" label="Additional CSS classes"/>
                 <flux:flexform.field.input name="aspect-ratio" label="Aspect Ration of Content-items, e.g '16x9'"/>
                 <flux:flexform.field.checkbox name="directionalNav" label="Show directional navigation"/>
                 <flux:flexform.section name="content-slider" label="Content Slider">
@@ -71,7 +72,7 @@
 
         </v:page.header>
 
-        <div id="{id}">
+        <div id="{id}" class="{additionalClasses}">
             <f:for each="{content-slider}" as="content-item" iteration="iteration">
                 <div>
                          <flux:flexform.renderContent area="content-item.{iteration.index}"/>
