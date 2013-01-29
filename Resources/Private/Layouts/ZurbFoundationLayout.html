@@ -1,9 +1,18 @@
 {namespace v=Tx_Vhs_ViewHelpers}
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
 
-<v:page.header>
-    <f:render section="ZurbFoundationHeadIncludes" partial="ZurbFoundationObjects" arguments="{_all}"/>
-    <f:render section="Resources"/>
-</v:page.header>
+    <v:asset.style path="EXT:fluidcontent_zurb/Resources/Public/stylesheets/style.css" name="fluidcontent_zurb-css"/>
+    <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/modernizr.foundation.js"
+                    name="modernizr" allowMoveToFooter="0"/>
+    <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.js" name="jquery"
+                    dependencies="modernizr" allowMoveToFooter="0"/>
 
-<f:render section="Content"/>
+    <v:page.header>
+        <f:render section="Resources"/>
+    </v:page.header>
 
+    <f:render section="Content"/>
+</div>

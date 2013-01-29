@@ -56,6 +56,10 @@
     </f:section>
 
     <f:section name="Main">
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.forms.js"
+                                 name="foundation-forms" standalone="0" dependencies="jquery"/>
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.tabs.js"
+                         name="foundation-tabs" standalone="0" dependencies="jquery,foundation-forms"/>
         <v:var.set name="activeTabIndex" value="0"/>
         <f:render section="Tabs" arguments="{_all}"/>
 
