@@ -12,6 +12,7 @@
                        icon="../typo3conf/ext/fluidcontent_zurb/Resources/Public/Icons/orbit-icon.jpg">
             <flux:flexform.sheet name="thumbnails" label="Thumbnails">
                 <flux:flexform.field.input name="id" label="ID of Slider, e.g. 'featured'"/>
+                <flux:flexform.field.checkbox name="timer" label="Use timer" default="true"/>
                 <flux:flexform.section name="thumbnails" label="Thumbnails">
                     <f:render section="ImageObject" arguments="{_all}"/>
                 </flux:flexform.section>
@@ -47,7 +48,7 @@
         <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.orbit.js"
                         name="orbit" standalone="1" dependencies="jquery"/>
         <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/elements/orbit-init.js"
-                        name="orbit-init" standalone="0" fluid="1" arguments="{id:id}"
+                        name="orbit-init" standalone="0" fluid="1" arguments="{id:id,directionalNav:directionalNav,aspect-ratio:aspect-ratio,timer:timer}"
                         dependencies="jquery,orbit"/>
         <div id="featured">
             <f:for each="{thumbnails}" as="itemSectionObject" iteration="iteration">
