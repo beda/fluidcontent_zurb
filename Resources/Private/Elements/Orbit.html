@@ -51,13 +51,14 @@
                         dependencies="jquery,orbit"/>
         <div id="featured">
             <f:for each="{thumbnails}" as="itemSectionObject" iteration="iteration">
-
                 <v:var.set name="object" value="{itemSectionObject.image}"/>
-
                 <div data-caption="#caption-{iteration.index}">
                     <f:image src="{object.file}" alt="{object.title}"/>
-                    <span class="orbit-caption" id="caption-{iteration.index}"><strong>{object.header}</strong> {object.caption}</span>
                 </div>
+            </f:for>
+            <f:for each="{thumbnails}" as="itemSectionObject" iteration="iteration">
+                <v:var.set name="object" value="{itemSectionObject.image}"/>
+                <span class="orbit-caption" id="caption-{iteration.index}"><strong>{object.header}</strong> {object.caption}</span>
             </f:for>
         </div>
     </f:section>
