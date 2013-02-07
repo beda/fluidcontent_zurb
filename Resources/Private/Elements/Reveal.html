@@ -42,6 +42,8 @@
     </f:section>
 
     <f:section name="Main">
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.reveal.js"
+                             name="jquery-foundation-reveal" standalone="1" dependencies="jquery"/>
         <f:for each="{modals}" as="modal" iteration="iteration">
             <v:switch value="{modal.modal.modal-size}">
                 <v:case case="small" break="TRUE">

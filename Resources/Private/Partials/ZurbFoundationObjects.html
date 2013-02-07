@@ -11,7 +11,7 @@
 
     <f:section name="TopBar">
         <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.topbar.js"
-                          name="topbar" dependencies="jquery"/>
+                          name="jquery-foundation-topbar" dependencies="jquery"/>
         <div class="row">
             <div class="twelve columns">
                 <nav class="top-bar">
@@ -85,6 +85,8 @@
     </f:section>
 
     <f:section name="NavBar">
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.navigation.js"
+                                name="jquery-foundation-navigation" standalone="0" dependencies="jquery" />
         <v:page.menu entryLevel="0">
             <ul class="nav-bar
                    {f:if(then: 'right', else: '', condition: '{pinRight}')}

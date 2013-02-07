@@ -52,6 +52,12 @@
     </f:section>
 
     <f:section name="Main">
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.event.move.js"
+                        name="jquery-event-move" standalone="0" dependencies="jquery" />
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.event.swipe.js"
+                        name="jquery-event-swipe" standalone="0" dependencies="jquery-event-move"/>
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.clearing.js"
+                        name="jquery-foundation-clearing" standalone="0" dependencies="jquery-event-move"/>
         <v:switch value="{thumbnail-distribution}">
             <v:case case="two-up" break="TRUE">
                 {v:var.set(name: 'thumbnail-distribution', value: 'block-grid two-up')}

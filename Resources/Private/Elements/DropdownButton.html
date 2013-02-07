@@ -44,6 +44,8 @@
     </f:section>
 
     <f:section name="Main">
+        <v:asset.script path="EXT:fluidcontent_zurb/Resources/Public/javascripts/foundation/jquery.foundation.buttons.js"
+                                name="jquery-foundation-buttons" standalone="0" dependencies="jquery" />
         <v:switch value="{button-style}">
             <v:case case="radius" break="TRUE">
                 {v:var.set(name: 'button-style', value: 'radius')}
